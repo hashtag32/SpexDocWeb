@@ -43,6 +43,24 @@ echo $header;
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/bootstrap_styles.css" />
 
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+
+
 </head>
 
 <body id="page-top">
@@ -78,31 +96,44 @@ echo $header;
 	<!-- About-->
 	<section class="page-section bg-primary" id="about">
 		<div class="container">
+		<h2 id="distance_h2" class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
 
-			<form>
-				<div class="form-group row">
-					<label for="text" class="col-2 col-form-label">Text Field</label>
-					<div class="col-10">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fa fa-address-card"></i>
-								</div>
-							</div>
-							<input id="text" name="text" type="text" class="form-control">
-						</div>
+
+			<form method="post" action="" onsubmit="">
+				<input style="border-radius:10px;background-color:white;margin:30px;" class="input-box input-form form-control" type="datetime-local"  id="example-datetime-local-input">
+
+				<div class="input-group mb-3">
+					<input id="start_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px" placeholder="Start GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+					<div style="margin:auto;width:90%" class="input-group-append">
+						<!-- todo:start coordinates here -->
+						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
+							<span class="input-group-text " id="basic-addon2">Search on Maps</span>
+						</a>
 					</div>
 				</div>
-				<div class="form-group row">
-					<label for="text1" class="col-2 col-form-label">Start Point</label>
-					<div class="col-10">
-						<input id="text1" name="text1" type="text" class="form-control">
+
+
+				<div class="input-group mb-3">
+					<input id="end_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px;" placeholder="End GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+					<div style="margin:auto;width:90%" class="input-group-append">
+						<!-- todo:start coordinates here -->
+						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
+							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
+						</a>
 					</div>
 				</div>
-				<div class="form-group row">
-					<div class="offset-2 col-10">
-						<button name="submit" type="submit" class="btn btn-primary">Submit</button>
-					</div>
+
+				<h2 id="distance_h2" class="own-h2 has-accent-color" style="font-size:35px">Distance: </h2>
+				<h2 id="price_h2" class="own-h2 has-accent-color" style="font-size:35px">Price: </h2>
+
+				<input id="email_input" style="border-radius:10px;background-color:white;margin:30px;" placeholder="enter email" class="input-box input-form " type="text" name="ne" required>
+
+				<div class=" button-wrap">
+					<button class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
+						Request delivery
+					</button>
 				</div>
 			</form>
 
@@ -237,14 +268,7 @@ echo $header;
 			<div class="small text-center text-muted">Copyright © 2020 - Dronorder </div>
 		</div>
 	</footer>
-	<!-- Bootstrap core JS-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-	<!-- Third party plugin JS-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
 </body>
 
 </html>
@@ -260,86 +284,9 @@ echo $header;
 
 
 
-
-
-
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$('#datetimepicker_start').datetimepicker();
-			});
-		});
-	</script>
 	<div class="section-inner">
 
-		<form method="post" action="" onsubmit="">
-			<div class='input-group' id='datetimepicker_start'>
-				<input style="border-radius:10px;background-color:white;margin:30px;" type='text' class="input-box input-form" />
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-calendar"></span>
-				</span>
-			</div>
 
-			<div class="input-group mb-3">
-				<input id="start_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px" placeholder="Start GPS Location" class="input-box input-form " type="text" name="ne" required>
-				<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-				<div style="margin:auto;width:90%" class="input-group-append">
-					<!-- todo:start coordinates here -->
-					<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
-						<span class="input-group-text " id="basic-addon2">Search on Maps</span>
-					</a>
-				</div>
-			</div>
-
-
-			<div class="input-group mb-3">
-				<input id="end_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px;" placeholder="End GPS Location" class="input-box input-form " type="text" name="ne" required>
-				<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-				<div style="margin:auto;width:90%" class="input-group-append">
-					<!-- todo:start coordinates here -->
-					<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
-						<span class="input-group-text " id="basic-addon2">Search on Maps </span>
-					</a>
-				</div>
-			</div>
-
-			<h2 id="distance_h2" class="own-h2 has-accent-color" style="font-size:35px">Distance: </h2>
-			<h2 id="price_h2" class="own-h2 has-accent-color" style="font-size:35px">Price: </h2>
-
-			<input id="email_input" style="border-radius:10px;background-color:white;margin:30px;" placeholder="enter email" class="input-box input-form " type="text" name="ne" required>
-
-			<div class=" button-wrap">
-				<button class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
-					Request delivery
-				</button>
-			</div>
-		</form>
 
 
 
