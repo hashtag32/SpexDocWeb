@@ -22,7 +22,7 @@
 		</div>
 		<div class="footer-credits">
 
-			<p class="footer-copyright has-accent-color">&copy;
+			<p class="footer-copyright">&copy;
 
 				<a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
 			</p><!-- .footer-copyright -->

@@ -61,8 +61,6 @@ echo $header;
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
 
-
-
 </head>
 
 <body id="page-top">
@@ -80,7 +78,7 @@ echo $header;
 				</div>
 				<div class="col-lg-8 align-self-baseline">
 					<div class="frontpage-subtitle"> Order a drone delivery flight </div>
-					<a class="btn btn-primary btn-xl js-scroll-trigger letsgo-button" style="font-size:20px;" href="#scheduleFlight">Let's Go</a>
+					<a class="btn btn-xl js-scroll-trigger letsgo-button" style="font-size:20px;" value="lets-go-button" href="#scheduleFlight">Let's Go</a>
 				</div>
 			</div>
 		</div>
@@ -123,7 +121,7 @@ echo $header;
 					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required>
 				</div>
 				<div class="has-text-align-center button-wrap">
-					<button id="request_delivery_button" class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="displayMap();">
 						Request delivery
 					</button>
 				</div>
@@ -165,7 +163,7 @@ echo $header;
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
 						<i class="fas fa-4x fa-address-card text-primary mb-4"></i>
-						<h3 class="h4 mb-2">50k+ Registered Pilots</h3>
+						<h3 class="h4 mb-2">50k+ Listed Pilots</h3>
 						<p class="text-muted mb-0">Drone pilots are waiting for you for your first flight!</p>
 					</div>
 				</div>
@@ -183,7 +181,7 @@ echo $header;
 	<section class="page-section bg-dark text-white">
 		<div class="container text-center">
 			<h2 class="mb-4">Become a registered pilot and earn money!</h2>
-			<a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Register here</a>
+			<a class="btn btn-light btn-xl" href="https://dronorder.net/contact/">Register here</a>
 		</div>
 	</section>
 	<!-- Testimonials-->
@@ -191,7 +189,7 @@ echo $header;
 		<div class="container-fluid p-0">
 			<div style="width:100%;margin:auto" class="row no-gutters">
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/1.jpg" alt="" />
+					<a class="portfolio-box"><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/1.jpg" alt="" />
 						<div class="portfolio-box-caption">
 							<div class="project-category text-white-50">Eric David</div>
 							<div class="project-name">Seattle</div>
@@ -199,7 +197,7 @@ echo $header;
 					</a>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/2.jpg" alt="" />
+					<a class="portfolio-box"><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/2.jpg" alt="" />
 						<div class="portfolio-box-caption">
 							<div class="project-category text-white-50">Maria Santos</div>
 							<div class="project-name">Los Angeles</div>
@@ -207,14 +205,14 @@ echo $header;
 					</a>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/3.jpg" alt="" />
+					<a class="portfolio-box"><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/3.jpg" alt="" />
 						<div class="portfolio-box-caption">
 							<div class="project-category text-white-50">Alexander Treib</div>
 							<div class="project-name">Stuttgart</div>
 						</div>
 					</a>
 				</div>
-		
+
 			</div>
 		</div>
 	</div>
@@ -222,7 +220,18 @@ echo $header;
 	<section class="page-section bg-dark text-white">
 		<div class="container text-center">
 			<h2 class="mb-4">Subscribe for latest updates!</h2>
-			<a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Subscribe</a>
+ 
+			<div class="tnp tnp-subscription">
+				<form method="post" action="https://dronorder.net/?na=s" onsubmit="return newsletter_check(this)">
+
+					<input style="border-radius:10px;background-color:white;" placeholder="enter email" class="input-form" type="email" name="ne" required>
+					<div class="tnp-field tnp-field-button button-wrap">
+						<button class="smart-button" style="background-color:#f4623a" type="submit" value="subscription-button">
+							Subscribe
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</section>
 	<!-- Contact-->
