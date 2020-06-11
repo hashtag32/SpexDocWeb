@@ -761,6 +761,14 @@ function twentytwenty_get_elements_array() {
 
 
 
+
+
+
+
+
+
+
+
 // Include bootstrap
 function wps_scripts() {
     
@@ -786,3 +794,14 @@ add_action(
     'wp_enqueue_scripts',
     'wps_scripts'
 );
+
+
+// Register scripts
+function register_scripts()
+{
+	foreach( glob( get_template_directory(). '/js/*.js' ) as $file ) {
+		$filename = substr($file, strrpos($file, '/') + 1);
+        wp_enqueue_script( $file, get_template_directory_uri() . '/js/' . $filename);
+    }
+}
+add_action('wp_enqueue_scripts', 'register_scripts');

@@ -32,7 +32,7 @@ echo $header;
 	<meta name="author" content="" />
 	<title>Creative - Start Bootstrap Theme</title>
 	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 	<!-- Google fonts-->
@@ -72,26 +72,28 @@ echo $header;
 		<div class="container h-100">
 			<div class="row h-100 align-items-center justify-content-center text-center">
 				<div class="col-lg-10 align-self-end">
-					<h1 class="text-uppercase text-white font-weight-bold">Dronorder</h1>
+					<div class="frontpage-logo">
+						<?php twentytwenty_site_logo(); ?>
+					</div>
+					<div class="frontpage-title">Dronorder</div>
 					<hr class="divider my-4" />
 				</div>
 				<div class="col-lg-8 align-self-baseline">
-					<p class="text-white-75 font-weight-light mb-5"> Request a drone delivery flight from A to B</p>
-					<a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Let's Go</a>
+					<div class="frontpage-subtitle"> Order a drone delivery flight </div>
+					<a class="btn btn-primary btn-xl js-scroll-trigger letsgo-button" style="font-size:20px;" href="#scheduleFlight">Let's Go</a>
 				</div>
 			</div>
 		</div>
 	</header>
-	<!-- About-->
-
-	<section class="page-section bg-primary" id="about">
+	<!-- Schedule your drone delivery -->
+	<section class="page-section bg-primary" id="scheduleFlight">
 		<div class="container">
 			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
 
 			<form method="post" action="" onsubmit="">
-			<div class="input-group mb-3">
-				<input class="input-form" type="datetime-local" id="example-datetime-local-input">
-</div>
+				<div class="input-group mb-3">
+					<input class="input-form" type="datetime-local" id="example-datetime-local-input">
+				</div>
 				<div class="input-group mb-3">
 					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
@@ -102,7 +104,6 @@ echo $header;
 						</a>
 					</div>
 				</div>
- 
 
 				<div class="input-group mb-3">
 					<input id="end_gps_location_input" placeholder="End GPS Location" class="input-form" type="text" name="ne" required>
@@ -113,368 +114,158 @@ echo $header;
 							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
 						</a>
 					</div>
-				</div> 
- 
-				<h3 class="own-h3" >Distance: </h3>
-				<h3 class="own-h3" >Price: ~</h3>
+				</div>
+
+				<h3 id="distance_output" class="own-h3">Distance: </h3>
+				<h3 id="price_output" class="own-h3">Price: ~</h3>
 
 				<div class="input-group mb-3">
-				<input id="email_input" placeholder="enter email" class="input-form " type="text" name="ne" required>
-</div>
+					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required>
+				</div>
 				<div class="has-text-align-center button-wrap">
-					<button class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
 						Request delivery
 					</button>
 				</div>
 			</form>
 
-			<div id="map-wrapper">
-				<div id="map-canvas" style="width: 500px; height: 500px;"></div>
-			</div>
-			<div>
-
-				<style>
-					html,
-					body,
-					#map-wrapper,
-					#map_canvas {
-						margin: 0;
-						padding: 0;
-						height: 100%;
-						width: 100%;
-					}
-				</style>
-				<div id="map-wrapper">
-					<div id="map_canvas" style="width: 500px; height: 500px;"></div>
-				</div>
+		</div>
+	</section>
+	<!-- Maps -->
+	<section id="section_maps" style="display: none;" class="page-section bg-black text-white">
+		<div class="container text-center">
+			<h2 class="mb-4" style="margin-bottom:20px">Watch your delivery!</h2>
+			<div style="color:black;" id="map-canvas" class="flight-map"></div>
 
 
-			</div>
+		</div>
+		<!-- <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Subscribe Now!</a> -->
+
 	</section>
 	<!-- Services-->
-	<section class="page-section" id="services">
+	<section class="page-section bg-white" id="services">
 		<div class="container">
 			<h2 class="text-center mt-0">At Your Service</h2>
 			<hr class="divider my-4" />
 			<div class="row">
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
-						<i class="fas fa-4x fa-gem text-primary mb-4"></i>
-						<h3 class="h4 mb-2">Sturdy Themes</h3>
-						<p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+						<i class="fas fa-4x fa-paper-plane text-primary mb-4"></i>
+						<h3 class="h4 mb-2">Quick response</h3>
+						<p class="text-muted mb-0">Most pilots answer between several hours to few days!</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
-						<i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-						<h3 class="h4 mb-2">Up to Date</h3>
-						<p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+						<i class="fas fa-4x fa-fighter-jet text-primary mb-4"></i>
+						<h3 class="h4 mb-2">Safety</h3>
+						<p class="text-muted mb-0">We only fly in allowed flight zones. Please clarify the details with your pilot.</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
-						<i class="fas fa-4x fa-globe text-primary mb-4"></i>
-						<h3 class="h4 mb-2">Ready to Publish</h3>
-						<p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+						<i class="fas fa-4x fa-address-card text-primary mb-4"></i>
+						<h3 class="h4 mb-2">50k+ Registered Pilots</h3>
+						<p class="text-muted mb-0">Drone pilots are waiting for you for your first flight!</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
 						<i class="fas fa-4x fa-heart text-primary mb-4"></i>
 						<h3 class="h4 mb-2">Made with Love</h3>
-						<p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+						<p class="text-muted mb-0">Be kind and we can bring drones in an useful way in our lives.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Portfolio-->
+	<!-- Become a pilot -->
+	<section class="page-section bg-dark text-white">
+		<div class="container text-center">
+			<h2 class="mb-4">Become a registered pilot and earn money!</h2>
+			<a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Register here</a>
+		</div>
+	</section>
+	<!-- Testimonials-->
 	<div id="portfolio">
 		<div class="container-fluid p-0">
-			<div class="row no-gutters">
+			<div style="width:100%;margin:auto" class="row no-gutters">
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/1.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/1.jpg" alt="" />
+					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/1.jpg" alt="" />
 						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
+							<div class="project-category text-white-50">Eric David</div>
+							<div class="project-name">Seattle</div>
 						</div>
 					</a>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/2.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/2.jpg" alt="" />
+					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/2.jpg" alt="" />
 						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
+							<div class="project-category text-white-50">Maria Santos</div>
+							<div class="project-name">Los Angeles</div>
 						</div>
 					</a>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/3.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/3.jpg" alt="" />
+					<a class="portfolio-box" ><img class="img-fluid" src="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/3.jpg" alt="" />
 						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
+							<div class="project-category text-white-50">Alexander Treib</div>
+							<div class="project-name">Stuttgart</div>
 						</div>
 					</a>
 				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/4.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/4.jpg" alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/5.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/5.jpg" alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/fullsize/6.jpg"><img class="img-fluid" src="http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/img/portfolio/thumbnails/6.jpg" alt="" />
-						<div class="portfolio-box-caption p-3">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div>
-					</a>
-				</div>
+		
 			</div>
 		</div>
 	</div>
-	<!-- Call to action-->
+	<!-- Subscription -->
 	<section class="page-section bg-dark text-white">
 		<div class="container text-center">
-			<h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-			<a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
+			<h2 class="mb-4">Subscribe for latest updates!</h2>
+			<a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Subscribe</a>
 		</div>
 	</section>
 	<!-- Contact-->
-	<section class="page-section" id="contact">
+	<section class="page-section text-white" id="contact">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<h2 class="mt-0">Let's Get In Touch!</h2>
 					<hr class="divider my-4" />
-					<p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+					<p class="text-muted mb-5">You have problems or questions. Just write us and email or use our contact form. Thanks! We will get back to you as soon as possible!</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-					<i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-					<div>+1 (555) 123-4567</div>
-				</div>
-				<div class="col-lg-4 mr-auto text-center">
-					<i class="fas fa-envelope fa-3x mb-3 text-muted"></i><!-- Make sure to change the email address in BOTH the anchor text and the link target below!--><a class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</a>
+				<div class="col-lg-4 mr-auto text-center" style="margin:auto">
+					<i class="fas fa-envelope fa-3x mb-3 text-muted"></i><!-- Make sure to change the email address in BOTH the anchor text and the link target below!--><a class="d-block" href="mailto:info@dronorder.net">info@dronorder.net</a>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container">
-			<div class="small text-center text-muted">Copyright © 2020 - Dronorder </div>
-		</div>
-	</footer>
-	<!-- Core theme JS-->
 </body>
 
 </html>
 
 
-<main id="site-content" class="landing-page" role="main">
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS9C0YTzYEEbq4U6nrSlgo5q_CHMPl1MQ&callback=initMap">
+</script>
 
-	<h2 class="has-text-align-center title-header  zoom-1">Dronorder</h2>
-	<h2 class="has-text-align-center subtitle-header zoom-1">Drone delivery service</h2>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
-	<div class="section-inner">
 
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS9C0YTzYEEbq4U6nrSlgo5q_CHMPl1MQ&callback=initMap">
-		</script>
 
-		<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-		<script src="/http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/gmap3.js?body=1" type="text/javascript"></script>
+<?php
 
-
-
-		<script>
-			// Read in GPS location
-			navigator.geolocation.getCurrentPosition(function(location) {
-				var start_gps_location_id = document.getElementById('start_gps_location_input');
-				console.log(location.coords.longitude);
-				start_gps_location_id.value = location.coords.latitude + ", " + location.coords.longitude;
-			});
-
-
-			function checkForm() {
-				return true;
-			}
-			// Set the marker on maps
-			function displayMap() {
-				var start_gps_location_id = document.getElementById('start_gps_location_input');
-				var start_gps_value = start_gps_location_id.value;
-
-				var startLong;
-				var startLat;
-				if (start_gps_value != "") {
-					start_gps_array = start_gps_value.split(/, /);
-					startLat = parseFloat(start_gps_array[0]);
-					startLong = parseFloat(start_gps_array[1]);
-				} else {
-					//todo:remove
-					startLat = 49.412069;
-					startLong = 6.981903;
-				}
-
-				var end_gps_location_id = document.getElementById('end_gps_location_input');
-
-				var end_gps_value = end_gps_location_id.value;
-
-				var endLat;
-				var endLong;
-				if (end_gps_value != "") {
-					end_gps_array = end_gps_value.split(/, /);
-					endLat = parseFloat(end_gps_array[0]);
-					endLong = parseFloat(end_gps_array[1]);
-				} else {
-					//todo:remove
-					startLat = 49.412069;
-					startLong = 6.981903;
-				}
-
-
-
-				// var endLat = 49.409031;
-				// var endLong = 6.964063;
-
-
-
-
-				var middleLong = (startLong + endLong) / 2;
-				var middleLat = (startLat + endLat) / 2;
-
-				var total_dist_km = distance(startLat, startLong, endLat, endLong, "K");
-				total_dist_m = (total_dist_km * 1000).toFixed(2);
-				document.getElementById('distance_h2').innerText += total_dist_m + " m";
-
-				var price_dollar = price(total_dist_m);
-
-
-				document.getElementById('price_h2').innerText += " ~" + price_dollar + " $";
-
-
-
-				console.log(total_dist_m);
-				console.log(middleLong);
-				console.log(middleLat);
-
-				var locations = [
-					['Start Point', startLat, startLong],
-					['End Point', endLat, endLong],
-				];
-
-
-				var map = new google.maps.Map(document.getElementById('map-canvas'), {
-					zoom: 13,
-					center: new google.maps.LatLng(middleLat, middleLong),
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				});
-
-				var infowindow = new google.maps.InfoWindow();
-
-				var marker, i;
-
-				for (i = 0; i < locations.length; i++) {
-					marker = new google.maps.Marker({
-						position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-						map: map
-					});
-
-					google.maps.event.addListener(marker, 'click', (function(marker, i) {
-						return function() {
-							infowindow.setContent(locations[i][0]);
-							infowindow.open(map, marker);
-						}
-					})(marker, i));
-				}
-
-
-
-
-			}
-
-
-
-
-
-
-			// General functions
-
-
-			function price(distance_m) {
-				// 2.5$ fixed + 1$ per 200m
-				return 2.5 + 1 * distance_m / 200;
-			}
-
-			function distance(lat1, lon1, lat2, lon2, unit) {
-				if ((lat1 == lat2) && (lon1 == lon2)) {
-					return 0;
-				} else {
-					var radlat1 = Math.PI * lat1 / 180;
-					var radlat2 = Math.PI * lat2 / 180;
-					var theta = lon1 - lon2;
-					var radtheta = Math.PI * theta / 180;
-					var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-					if (dist > 1) {
-						dist = 1;
-					}
-					dist = Math.acos(dist);
-					dist = dist * 180 / Math.PI;
-					dist = dist * 60 * 1.1515;
-					if (unit == "K") {
-						dist = dist * 1.609344
-					}
-					if (unit == "N") {
-						dist = dist * 0.8684
-					}
-					return dist;
-				}
-			}
-		</script>
-
-
-
-		<?php
-
-		function sendMail($requesterMail, $startCoordinates, $endCoordinates, $date)
-		{
-			$subject = "New Delivery request";
-			$content = 'From: ' . $requesterMail . ' \n StartCoordinates: ' . $startCoordinates . ' \n EndCoordinates: ' . $endCoordinates . ' \n Date: ' . $date;
-			$recipient = "request@stockvoting.net";
-			// $mailheader = "From: alex@treib \r\n";
-			mail($recipient, $subject, $content) or die("Error!");
-		}
-		?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</main><!-- #site-content -->
-
+function sendMail($requesterMail, $startCoordinates, $endCoordinates, $date)
+{
+	$subject = "New Delivery request";
+	$content = 'From: ' . $requesterMail . ' \n StartCoordinates: ' . $startCoordinates . ' \n EndCoordinates: ' . $endCoordinates . ' \n Date: ' . $date;
+	$recipient = "request@stockvoting.net";
+	// $mailheader = "From: alex@treib \r\n";
+	mail($recipient, $subject, $content) or die("Error!");
+}
+?>
 
 <?php get_template_part('template-parts/footer-menus-widgets'); ?>
 

@@ -34,6 +34,8 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/own_styles.css" />
+
 	<?php wp_head(); ?>
 
 </head>
@@ -46,9 +48,8 @@
 
 	<?php
 	// Output the menu modal.
-	if(!is_front_page()	)
-	{
-	get_template_part('own-template-parts/header-menu');
+	if (!is_front_page()) {
+		get_template_part('own-templates/header-menu');
 	}
 	?>
 
@@ -58,5 +59,4 @@
 	get_template_part('template-parts/modal-menu');
 	?>
 
-<a class="btn btn-primary feedback-button" href="https://stockvoting.net/contact" role="button">Feedback</a>
- 
+	<a class="btn btn-primary feedback-button" href="https://stockvoting.net/contact" role="button">Feedback</a>
