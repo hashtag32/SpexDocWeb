@@ -760,4 +760,21 @@ function twentytwenty_get_elements_array() {
 }
 
 
-	
+
+// Include bootstrap
+function wps_scripts() {
+    
+    /* Bootstrap CSS */
+    wp_enqueue_style( 
+        'bootstrap',
+        get_template_directory_uri() . '/bootstrap_styles.css',
+        array(),
+        '4.4.1'
+    );
+
+}
+
+add_action(
+    'wp_enqueue_scripts',
+    'wps_scripts'
+);
