@@ -6459,3 +6459,156 @@ a.to-the-top > * {
 		top: 0;
 	}
 }
+
+
+
+.landing-page{
+	margin-top: 150px;
+	padding:15px;
+}
+
+.landing-page:before{
+	content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	background: url("http://dronorder.doc12.org/wp-content/uploads/2020/06/action-air-aircraft-aviation-442587-scaled.jpg") center center;
+	opacity:.65;
+}
+
+
+
+.zoom {
+	transition: transform .2s;
+}
+
+.zoom:hover {
+-ms-transform: scale(1.5); /* IE 9 */
+-webkit-transform: scale(1.5); /* Safari 3-8 */
+transform: scale(1.5); 
+}
+
+.zoom-1{ 
+	transition: transform .4s;
+}
+
+.zoom-1:hover {
+	z-index:100;
+	-ms-transform: scale(1.15); /* IE 9 */
+	-webkit-transform: scale(1.15); /* Safari 3-8 */
+	transform: scale(1.15); 
+}
+
+.title-header{
+-webkit-font-smoothing: antialiased;
+word-wrap: break-word;
+hyphens: manual;
+text-align: center;
+border: 0;
+outline: 0;
+font: inherit;
+vertical-align: baseline;
+font-family: inherit;
+font-style: inherit;
+box-sizing: border-box;
+padding: 0;
+margin: 20px;
+line-height: 1;
+color: #fff;
+font-size: 80px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.subtitle-header
+{
+	-webkit-font-smoothing: antialiased;
+word-wrap: break-word;
+hyphens: manual;
+text-align: center;
+border: 0;
+outline: 0;
+font: inherit;
+vertical-align: baseline;
+font-style: inherit;
+box-sizing: border-box;
+padding: 0;
+margin: 20px;
+line-height: 1;
+color: #ddd;
+font-family: roboto,Sans-serif;
+font-size: 80px;
+font-weight: 300;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+
+.feedback-button {
+    box-shadow: 0 6px 6px rgba(0,0,0,0.25) !important;
+    position: fixed;
+    border: 1px solid var(--input-border-color);
+    bottom: 0;
+    right: 20px;
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 7px;
+    padding-right: 7px;
+    z-index: 9;
+    border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: 0;
+    border-right: 0;
+    background: #fff;
+    color: var(--input-text-color);
+    background: var(--input-background-color);
+}
+
+
+.input-box{
+	margin:30px;
+}
+
+.input-form{
+	width: 100%;
+    height: 50px;
+    padding: 10px;
+    display: block;
+    border: 1px;
+    background-image: none;
+    text-shadow: none;
+    color: #444;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    line-height: normal;
+	box-sizing: border-box;
+	
+	border-radius:10px;
+	background-color:white;
+}
+
+ 
+
+#map_wrapper {
+    height: 400px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+#map {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+  }

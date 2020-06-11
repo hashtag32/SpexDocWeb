@@ -63,7 +63,7 @@
 							twentytwenty_site_logo();
 
 							// Site description.
-							twentytwenty_site_description();
+							// twentytwenty_site_description();
 						?>
 
 					</div><!-- .header-titles -->
@@ -185,3 +185,5 @@
 		<?php
 		// Output the menu modal.
 		get_template_part( 'template-parts/modal-menu' );
+
+		
