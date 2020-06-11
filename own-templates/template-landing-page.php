@@ -100,10 +100,10 @@ echo $header;
 
 
 			<form method="post" action="" onsubmit="">
-				<input style="border-radius:10px;background-color:white;margin:30px;" class="input-box input-form form-control" type="datetime-local"  id="example-datetime-local-input">
+				<input style="color:black;border-radius:10px;background-color:white;margin:30px;" class="input-box input-form form-control" type="datetime-local"  id="example-datetime-local-input">
 
 				<div class="input-group mb-3">
-					<input id="start_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px" placeholder="Start GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<input id="start_gps_location_input" style="color:black;border-radius:10px;background-color:white;margin:30px;margin-bottom:0px" placeholder="Start GPS Location" class="input-box input-form " type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
@@ -115,7 +115,7 @@ echo $header;
 
 
 				<div class="input-group mb-3">
-					<input id="end_gps_location_input" style="border-radius:10px;background-color:white;margin:30px;margin-bottom:0px;" placeholder="End GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<input id="end_gps_location_input" style="color:black;border-radius:10px;background-color:white;margin:30px;margin-bottom:0px;" placeholder="End GPS Location" class="input-box input-form " type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
@@ -128,16 +128,34 @@ echo $header;
 				<h2 id="distance_h2" class="own-h2 has-accent-color" style="font-size:35px">Distance: </h2>
 				<h2 id="price_h2" class="own-h2 has-accent-color" style="font-size:35px">Price: </h2>
 
-				<input id="email_input" style="border-radius:10px;background-color:white;margin:30px;" placeholder="enter email" class="input-box input-form " type="text" name="ne" required>
+				<input id="email_input" style="color:black;border-radius:10px;background-color:white;margin:30px;" placeholder="enter email" class="input-box input-form " type="text" name="ne" required>
 
-				<div class=" button-wrap">
+				<div class="has-text-align-center button-wrap">
 					<button class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
 						Request delivery
 					</button>
 				</div>
 			</form>
 
+			<div id="map-wrapper">
+			<div id="map-canvas" style="width: 500px; height: 500px;"></div>
+		</div>
+		<div>
 
+			<style>
+				html,
+				body,
+				#map-wrapper,
+				#map_canvas {
+					margin: 0;
+					padding: 0;
+					height: 100%;
+					width: 100%;
+				}
+			</style>
+			<div id="map-wrapper">
+				<div id="map_canvas" style="width: 500px; height: 500px;"></div>
+			</div>
 
 
 		</div>
@@ -280,40 +298,14 @@ echo $header;
 	<h2 class="has-text-align-center title-header  zoom-1">Dronorder</h2>
 	<h2 class="has-text-align-center subtitle-header zoom-1">Drone delivery service</h2>
 
-
-
-
-
 	<div class="section-inner">
-
-
-
-
 
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS9C0YTzYEEbq4U6nrSlgo5q_CHMPl1MQ&callback=initMap">
 		</script>
 
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 		<script src="/http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/gmap3.js?body=1" type="text/javascript"></script>
-		<div id="map-wrapper">
-			<div id="map-canvas" style="width: 500px; height: 500px;"></div>
-		</div>
-		<div>
-
-			<style>
-				html,
-				body,
-				#map-wrapper,
-				#map_canvas {
-					margin: 0;
-					padding: 0;
-					height: 100%;
-					width: 100%;
-				}
-			</style>
-			<div id="map-wrapper">
-				<div id="map_canvas" style="width: 500px; height: 500px;"></div>
-			</div>
+		
 
 
 			<script>

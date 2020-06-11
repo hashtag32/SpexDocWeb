@@ -10194,3 +10194,30 @@ header.masthead h1 {
   background: var(--input-background-color);
 }
 
+
+.button-wrap {
+	/* height: 100%; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:10px;
+}
+
+.smart-button {
+	color: white;
+	background-color:black !important; 
+	letter-spacing: 2.5px;
+	border: none;
+	border-radius: 45px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	width:350px;
+	margin:20px;
+}
+
+.smart-button:hover {
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	transform: translateY(-7px);
+}
+
