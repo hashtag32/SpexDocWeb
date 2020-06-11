@@ -42,6 +42,8 @@ echo $header;
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/bootstrap_styles.css" />
+	<!-- Own_styles has higher priority (1. Own, then Bootstrap, then Wordpress) -->
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/own_styles.css" />
 
 
 
@@ -64,20 +66,7 @@ echo $header;
 </head>
 
 <body id="page-top">
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+
 	<!-- Masthead-->
 	<header class="masthead">
 		<div class="container h-100">
@@ -94,16 +83,17 @@ echo $header;
 		</div>
 	</header>
 	<!-- About-->
+
 	<section class="page-section bg-primary" id="about">
 		<div class="container">
-		<h2 id="distance_h2" class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
-
+			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
 
 			<form method="post" action="" onsubmit="">
-				<input style="color:black;border-radius:10px;background-color:white;margin:30px;" class="input-box input-form form-control" type="datetime-local"  id="example-datetime-local-input">
-
+			<div class="input-group mb-3">
+				<input class="input-form" type="datetime-local" id="example-datetime-local-input">
+</div>
 				<div class="input-group mb-3">
-					<input id="start_gps_location_input" style="color:black;border-radius:10px;background-color:white;margin:30px;margin-bottom:0px" placeholder="Start GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
@@ -112,10 +102,10 @@ echo $header;
 						</a>
 					</div>
 				</div>
-
+ 
 
 				<div class="input-group mb-3">
-					<input id="end_gps_location_input" style="color:black;border-radius:10px;background-color:white;margin:30px;margin-bottom:0px;" placeholder="End GPS Location" class="input-box input-form " type="text" name="ne" required>
+					<input id="end_gps_location_input" placeholder="End GPS Location" class="input-form" type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
@@ -123,13 +113,14 @@ echo $header;
 							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
 						</a>
 					</div>
-				</div>
+				</div> 
+ 
+				<h3 class="own-h3" >Distance: </h3>
+				<h3 class="own-h3" >Price: ~</h3>
 
-				<h2 id="distance_h2" class="own-h2 has-accent-color" style="font-size:35px">Distance: </h2>
-				<h2 id="price_h2" class="own-h2 has-accent-color" style="font-size:35px">Price: </h2>
-
-				<input id="email_input" style="color:black;border-radius:10px;background-color:white;margin:30px;" placeholder="enter email" class="input-box input-form " type="text" name="ne" required>
-
+				<div class="input-group mb-3">
+				<input id="email_input" placeholder="enter email" class="input-form " type="text" name="ne" required>
+</div>
 				<div class="has-text-align-center button-wrap">
 					<button class="smart-button" type="submit" value="Subscribe" onClick="displayMap();">
 						Request delivery
@@ -138,27 +129,27 @@ echo $header;
 			</form>
 
 			<div id="map-wrapper">
-			<div id="map-canvas" style="width: 500px; height: 500px;"></div>
-		</div>
-		<div>
-
-			<style>
-				html,
-				body,
-				#map-wrapper,
-				#map_canvas {
-					margin: 0;
-					padding: 0;
-					height: 100%;
-					width: 100%;
-				}
-			</style>
-			<div id="map-wrapper">
-				<div id="map_canvas" style="width: 500px; height: 500px;"></div>
+				<div id="map-canvas" style="width: 500px; height: 500px;"></div>
 			</div>
+			<div>
+
+				<style>
+					html,
+					body,
+					#map-wrapper,
+					#map_canvas {
+						margin: 0;
+						padding: 0;
+						height: 100%;
+						width: 100%;
+					}
+				</style>
+				<div id="map-wrapper">
+					<div id="map_canvas" style="width: 500px; height: 500px;"></div>
+				</div>
 
 
-		</div>
+			</div>
 	</section>
 	<!-- Services-->
 	<section class="page-section" id="services">
@@ -305,167 +296,167 @@ echo $header;
 
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 		<script src="/http://dronorder.doc12.org/wp-content/themes/twentytwenty/assets/gmap3.js?body=1" type="text/javascript"></script>
-		
 
 
-			<script>
-				// Read in GPS location
-				navigator.geolocation.getCurrentPosition(function(location) {
-					var start_gps_location_id = document.getElementById('start_gps_location_input');
-					console.log(location.coords.longitude);
-					start_gps_location_id.value = location.coords.latitude + ", " + location.coords.longitude;
+
+		<script>
+			// Read in GPS location
+			navigator.geolocation.getCurrentPosition(function(location) {
+				var start_gps_location_id = document.getElementById('start_gps_location_input');
+				console.log(location.coords.longitude);
+				start_gps_location_id.value = location.coords.latitude + ", " + location.coords.longitude;
+			});
+
+
+			function checkForm() {
+				return true;
+			}
+			// Set the marker on maps
+			function displayMap() {
+				var start_gps_location_id = document.getElementById('start_gps_location_input');
+				var start_gps_value = start_gps_location_id.value;
+
+				var startLong;
+				var startLat;
+				if (start_gps_value != "") {
+					start_gps_array = start_gps_value.split(/, /);
+					startLat = parseFloat(start_gps_array[0]);
+					startLong = parseFloat(start_gps_array[1]);
+				} else {
+					//todo:remove
+					startLat = 49.412069;
+					startLong = 6.981903;
+				}
+
+				var end_gps_location_id = document.getElementById('end_gps_location_input');
+
+				var end_gps_value = end_gps_location_id.value;
+
+				var endLat;
+				var endLong;
+				if (end_gps_value != "") {
+					end_gps_array = end_gps_value.split(/, /);
+					endLat = parseFloat(end_gps_array[0]);
+					endLong = parseFloat(end_gps_array[1]);
+				} else {
+					//todo:remove
+					startLat = 49.412069;
+					startLong = 6.981903;
+				}
+
+
+
+				// var endLat = 49.409031;
+				// var endLong = 6.964063;
+
+
+
+
+				var middleLong = (startLong + endLong) / 2;
+				var middleLat = (startLat + endLat) / 2;
+
+				var total_dist_km = distance(startLat, startLong, endLat, endLong, "K");
+				total_dist_m = (total_dist_km * 1000).toFixed(2);
+				document.getElementById('distance_h2').innerText += total_dist_m + " m";
+
+				var price_dollar = price(total_dist_m);
+
+
+				document.getElementById('price_h2').innerText += " ~" + price_dollar + " $";
+
+
+
+				console.log(total_dist_m);
+				console.log(middleLong);
+				console.log(middleLat);
+
+				var locations = [
+					['Start Point', startLat, startLong],
+					['End Point', endLat, endLong],
+				];
+
+
+				var map = new google.maps.Map(document.getElementById('map-canvas'), {
+					zoom: 13,
+					center: new google.maps.LatLng(middleLat, middleLong),
+					mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 
+				var infowindow = new google.maps.InfoWindow();
 
-				function checkForm() {
-					return true;
-				}
-				// Set the marker on maps
-				function displayMap() {
-					var start_gps_location_id = document.getElementById('start_gps_location_input');
-					var start_gps_value = start_gps_location_id.value;
+				var marker, i;
 
-					var startLong;
-					var startLat;
-					if (start_gps_value != "") {
-						start_gps_array = start_gps_value.split(/, /);
-						startLat = parseFloat(start_gps_array[0]);
-						startLong = parseFloat(start_gps_array[1]);
-					} else {
-						//todo:remove
-						startLat = 49.412069;
-						startLong = 6.981903;
-					}
-
-					var end_gps_location_id = document.getElementById('end_gps_location_input');
-
-					var end_gps_value = end_gps_location_id.value;
-
-					var endLat;
-					var endLong;
-					if (end_gps_value != "") {
-						end_gps_array = end_gps_value.split(/, /);
-						endLat = parseFloat(end_gps_array[0]);
-						endLong = parseFloat(end_gps_array[1]);
-					} else {
-						//todo:remove
-						startLat = 49.412069;
-						startLong = 6.981903;
-					}
-
-
-
-					// var endLat = 49.409031;
-					// var endLong = 6.964063;
-
-
-
-
-					var middleLong = (startLong + endLong) / 2;
-					var middleLat = (startLat + endLat) / 2;
-
-					var total_dist_km = distance(startLat, startLong, endLat, endLong, "K");
-					total_dist_m = (total_dist_km * 1000).toFixed(2);
-					document.getElementById('distance_h2').innerText += total_dist_m + " m";
-
-					var price_dollar = price(total_dist_m);
-
-
-					document.getElementById('price_h2').innerText += " ~" + price_dollar + " $";
-
-
-
-					console.log(total_dist_m);
-					console.log(middleLong);
-					console.log(middleLat);
-
-					var locations = [
-						['Start Point', startLat, startLong],
-						['End Point', endLat, endLong],
-					];
-
-
-					var map = new google.maps.Map(document.getElementById('map-canvas'), {
-						zoom: 13,
-						center: new google.maps.LatLng(middleLat, middleLong),
-						mapTypeId: google.maps.MapTypeId.ROADMAP
+				for (i = 0; i < locations.length; i++) {
+					marker = new google.maps.Marker({
+						position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+						map: map
 					});
 
-					var infowindow = new google.maps.InfoWindow();
-
-					var marker, i;
-
-					for (i = 0; i < locations.length; i++) {
-						marker = new google.maps.Marker({
-							position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-							map: map
-						});
-
-						google.maps.event.addListener(marker, 'click', (function(marker, i) {
-							return function() {
-								infowindow.setContent(locations[i][0]);
-								infowindow.open(map, marker);
-							}
-						})(marker, i));
-					}
-
-
-
-
+					google.maps.event.addListener(marker, 'click', (function(marker, i) {
+						return function() {
+							infowindow.setContent(locations[i][0]);
+							infowindow.open(map, marker);
+						}
+					})(marker, i));
 				}
 
 
 
 
-
-
-				// General functions
-
-
-				function price(distance_m) {
-					// 2.5$ fixed + 1$ per 200m
-					return 2.5 + 1 * distance_m / 200;
-				}
-
-				function distance(lat1, lon1, lat2, lon2, unit) {
-					if ((lat1 == lat2) && (lon1 == lon2)) {
-						return 0;
-					} else {
-						var radlat1 = Math.PI * lat1 / 180;
-						var radlat2 = Math.PI * lat2 / 180;
-						var theta = lon1 - lon2;
-						var radtheta = Math.PI * theta / 180;
-						var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-						if (dist > 1) {
-							dist = 1;
-						}
-						dist = Math.acos(dist);
-						dist = dist * 180 / Math.PI;
-						dist = dist * 60 * 1.1515;
-						if (unit == "K") {
-							dist = dist * 1.609344
-						}
-						if (unit == "N") {
-							dist = dist * 0.8684
-						}
-						return dist;
-					}
-				}
-			</script>
-
-
-
-			<?php
-
-			function sendMail($requesterMail, $startCoordinates, $endCoordinates, $date)
-			{
-				$subject = "New Delivery request";
-				$content = 'From: ' . $requesterMail . ' \n StartCoordinates: ' . $startCoordinates . ' \n EndCoordinates: ' . $endCoordinates . ' \n Date: ' . $date;
-				$recipient = "request@stockvoting.net";
-				// $mailheader = "From: alex@treib \r\n";
-				mail($recipient, $subject, $content) or die("Error!");
 			}
-			?>
+
+
+
+
+
+
+			// General functions
+
+
+			function price(distance_m) {
+				// 2.5$ fixed + 1$ per 200m
+				return 2.5 + 1 * distance_m / 200;
+			}
+
+			function distance(lat1, lon1, lat2, lon2, unit) {
+				if ((lat1 == lat2) && (lon1 == lon2)) {
+					return 0;
+				} else {
+					var radlat1 = Math.PI * lat1 / 180;
+					var radlat2 = Math.PI * lat2 / 180;
+					var theta = lon1 - lon2;
+					var radtheta = Math.PI * theta / 180;
+					var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+					if (dist > 1) {
+						dist = 1;
+					}
+					dist = Math.acos(dist);
+					dist = dist * 180 / Math.PI;
+					dist = dist * 60 * 1.1515;
+					if (unit == "K") {
+						dist = dist * 1.609344
+					}
+					if (unit == "N") {
+						dist = dist * 0.8684
+					}
+					return dist;
+				}
+			}
+		</script>
+
+
+
+		<?php
+
+		function sendMail($requesterMail, $startCoordinates, $endCoordinates, $date)
+		{
+			$subject = "New Delivery request";
+			$content = 'From: ' . $requesterMail . ' \n StartCoordinates: ' . $startCoordinates . ' \n EndCoordinates: ' . $endCoordinates . ' \n Date: ' . $date;
+			$recipient = "request@stockvoting.net";
+			// $mailheader = "From: alex@treib \r\n";
+			mail($recipient, $subject, $content) or die("Error!");
+		}
+		?>
 
 
 
