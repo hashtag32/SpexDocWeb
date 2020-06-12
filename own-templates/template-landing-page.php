@@ -139,14 +139,11 @@ echo $header;
 	<!-- Maps -->
 	<section id="section-maps" style="display: none;" class="page-section bg-black text-white">
 		<div class="container text-center">
-
 			<h2 class="mb-4 own-h2">Watch your delivery!</h2>
 			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h2>
 				<h3 id="price_output" class="mb-4 own-h3">Price: ~</h2>
-
-					<div style="color:black;" id="map-canvas" class="flight-map"></div>
-
-
+					<div style="color:black;" id="map-canvas" class="flight-map">
+				</div>
 		</div>
 
 	</section>

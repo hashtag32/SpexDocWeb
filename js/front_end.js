@@ -12,7 +12,6 @@ function setGPSPosition() {
     var start_gps_location_id = document.getElementById(
       "start_gps_location_input"
     );
-    console.log(location.coords.longitude);
     start_gps_location_id.value =
       location.coords.latitude + ", " + location.coords.longitude;
   });
@@ -68,10 +67,6 @@ function displayMap() {
 
   document.getElementById("price_output").innerText += price_dollar + " $";
 
-  console.log(total_dist_m);
-  console.log(middleLong);
-  console.log(middleLat);
-
   var locations = [
     ["Start Point", startLat, startLong],
     ["End Point", endLat, endLong],
@@ -106,7 +101,6 @@ function displayMap() {
       marker,
       "click",
       (function (marker, i) {
-        console.log("fired");
         return function () {
           infowindow.setContent(locations[i][0]);
           infowindow.open(map, marker);

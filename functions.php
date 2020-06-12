@@ -815,23 +815,23 @@ add_action('wp_enqueue_scripts', 'send_receive_ajax_script');
 // Register scripts
 function register_scripts()
 {
-	foreach( glob( get_template_directory(). '/js/*.js' ) as $file ) {
+	foreach (glob(get_template_directory() . '/js/*.js') as $file) {
 		$filename = substr($file, strrpos($file, '/') + 1);
-        wp_enqueue_script( $file, get_template_directory_uri() . '/js/' . $filename);
+		wp_enqueue_script($file, get_template_directory_uri() . '/js/' . $filename);
     }
 }
 add_action('wp_enqueue_scripts', 'register_scripts');
 
 
 
-function sendRequestToServer($email,$startLoc,$startTime)
+function sendRequestToServer($email, $startLoc, $startTime)
 {
 	$endpoint = 'http://h2881013.stratoserver.net:8080';
 
 	$body = [
-		'email'=>$email,
-		'startLoc'=>$startLoc,
-		'startTime'=>$startTime
+		'email' => $email,
+		'startLoc' => $startLoc,
+		'startTime' => $startTime
 	];
 
 	$body = wp_json_encode($body);
@@ -849,18 +849,34 @@ function sendRequestToServer($email,$startLoc,$startTime)
 		'data_format' => 'body',
 	];
 
-	wp_remote_post($endpoint, $options);
+	return wp_remote_post($endpoint, $options);
 }
 
+function send_mail($argumentList)
+{
+	$receiver = 'info@dronorder.net';
+	$subject = 'Error: Request could not reach server';
+	$msg = 'Hi Webmaster,';
+
+	$msg = 'Hello,
+I could not reach the server while request drone delivery. 
+Details:
+';
+	$msg = $msg . implode(",", $argumentList);
 
 
+	$header = array(
+		'From' => 'server@dronorder.net',
+		'Reply-To' => 'server@dronorder.net',
+		'X-Mailer' => 'PHP/' . phpversion()
+	);
 
+	mail($receiver, $subject, $msg, $header);
+}
 
 function php_function_call()
 {
     $aResult = array();
-
-    // todo: call directPhpFunc -> problem with arguments 
 
     if (!isset($_POST['functionname'])) {
         $aResult['error'] = 'No function name!';
@@ -876,11 +892,15 @@ function php_function_call()
                 } else {
                     $argumentList = $_POST['arguments'];
 					
-					$email=$argumentList[0];
-					$startLoc=$argumentList[1];
-					$startTime=$argumentList[2]; 
+					$email = $argumentList[0];
+					$startLoc = $argumentList[1];
+					$startTime = $argumentList[2];
 
-                    $aResult['result'] = sendRequestToServer($email,$startLoc,$startTime);
+					$aResult['result'] = sendRequestToServer($email, $startLoc, $startTime);
+					if (is_wp_error($aResult['result'])) {
+						$aResult['error'] = true;
+						send_mail($argumentList);
+					}
                 }
                 break;
 

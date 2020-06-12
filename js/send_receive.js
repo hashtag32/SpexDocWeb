@@ -5,7 +5,6 @@ function php_function_call(
   directPhpFunc = null,
   callbackFunc = null
 ) {
-  console.log("enter php functioncall")
   var promiseObj = new Promise(function (resolve, reject) {
     jQuery.ajax({
       type: "POST",
@@ -20,10 +19,7 @@ function php_function_call(
       },
 
       success: function (obj, textstatus) {
-        console.log("success");
         if (callbackFunc != null) {
-         console.log("success");
-
           // console.log("about to call:" + callbackFunc );
           // window[callbackFunc](arguments);
         }
