@@ -1,15 +1,10 @@
 var $ = jQuery;
 //Front End Navigation
 $(document).ready(function () {
-  frontEndFunctions();
+  // frontEndFunctions();
   setGPSPosition();
 });
 
-function frontEndFunctions() {
-  $("#request_delivery_button").click(function () {
-    $("#section_maps").fadeIn("slow");
-  });
-}
 
 function setGPSPosition() {
   // Read in GPS location
@@ -26,7 +21,6 @@ function setGPSPosition() {
 function checkForm() {
   return true;
 }
-
 
 // Set the marker on maps
 function displayMap() {
@@ -120,6 +114,11 @@ function displayMap() {
       })(marker, i)
     );
   }
+
+  // Formatting
+  $("#section-maps").fadeIn("slow");
+  $('html,body').animate({scrollTop: $('#section-maps').offset().top}, 800 );
+
 }
 
 // General functions
@@ -139,7 +138,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     var radtheta = (Math.PI * theta) / 180;
     var dist =
       Math.sin(radlat1) * Math.sin(radlat2) +
-      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta); 
     if (dist > 1) {
       dist = 1;
     }

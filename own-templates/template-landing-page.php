@@ -78,7 +78,9 @@ echo $header;
 				</div>
 				<div class="col-lg-8 align-self-baseline">
 					<div class="frontpage-subtitle"> Order a drone delivery flight </div>
-					<a class="btn btn-xl js-scroll-trigger letsgo-button" style="font-size:20px;" value="lets-go-button" href="#scheduleFlight">Let's Go</a>
+					<div class="has-text-align-center button-wrap">
+						<a class=" smart-button" value="letsgo-button" href="#scheduleFlight">Let's Go</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -114,15 +116,20 @@ echo $header;
 					</div>
 				</div>
 
-				<h3 id="distance_output" class="own-h3">Distance: </h3>
-				<h3 id="price_output" class="own-h3">Price: ~</h3>
+
+				<div class="has-text-align-center button-wrap">
+					<button id="preview_flight_button" class="smart-button" type="submit" value="preview_flight_button" onClick="displayMap();">
+						Preview Flight
+					</button>
+				</div>
+
 
 				<div class="input-group mb-3">
 					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required='required'>
 				</div>
-				<div class="has-text-align-center button-wrap"> 
-					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="php_function_call('sendRequestToServer',[ email_input.value,start_gps_location_input.value,startTime_input.value]); displayMap();">
-					Request delivery
+				<div class="has-text-align-center button-wrap">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="php_function_call('sendRequestToServer',[ email_input.value,start_gps_location_input.value,startTime_input.value]); ">
+						Request delivery
 					</button>
 				</div>
 			</form>
@@ -130,14 +137,17 @@ echo $header;
 		</div>
 	</section>
 	<!-- Maps -->
-	<section id="section_maps" style="display: none;" class="page-section bg-black text-white">
+	<section id="section-maps" style="display: none;" class="page-section bg-black text-white">
 		<div class="container text-center">
-			<h2 class="mb-4" style="margin-bottom:20px">Watch your delivery!</h2>
-			<div style="color:black;" id="map-canvas" class="flight-map"></div>
+
+			<h2 class="mb-4 own-h2">Watch your delivery!</h2>
+			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h2>
+				<h3 id="price_output" class="mb-4 own-h3">Price: ~</h2>
+
+					<div style="color:black;" id="map-canvas" class="flight-map"></div>
 
 
 		</div>
-		<!-- <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Subscribe Now!</a> -->
 
 	</section>
 	<!-- Services-->

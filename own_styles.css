@@ -48,16 +48,19 @@
     width: 350px;
     margin: 20px;
     font-size: 20px;
+    padding: 10px;
 }
 
-.smart-button[value="request_delivery_button"] {
+
+.smart-button[value="request_delivery_button"], .smart-button[value="preview_flight_button"] {
     background-color: black;
 }
 
 
-.smart-button[value="subscription-button"] {
+.smart-button[value="subscription-button"], .smart-button[value="letsgo-button"]  {
     background-color: #f4623a;
 }
+
 
 .smart-button:hover {
     box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
@@ -67,8 +70,9 @@
 .own-h3 {
     font-size: 30px;
     font-weight: 600;
-    color: black;
+    color: white;
     width: 50%;
+    margin-bottom:20px;
 }
 
 
@@ -124,6 +128,7 @@
     font-size: 40px;
 }
 
+
 .letsgo-button {
     width: 350px;
     color: white;
@@ -134,7 +139,6 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
-    width: 350px;
     margin: 20px;
 }
 
