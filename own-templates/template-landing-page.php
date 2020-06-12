@@ -90,14 +90,14 @@ echo $header;
 
 			<form method="post" action="" onsubmit="">
 				<div class="input-group mb-3">
-					<input class="input-form" type="datetime-local" id="example-datetime-local-input">
+					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
 				<div class="input-group mb-3">
 					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
+						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z">
 							<span class="input-group-text " id="basic-addon2">Search on Maps</span>
 						</a>
 					</div>
@@ -108,7 +108,7 @@ echo $header;
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
 					<div style="margin:auto;width:90%" class="input-group-append">
 						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z?hl=de-DE">
+						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z">
 							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
 						</a>
 					</div>
@@ -118,11 +118,11 @@ echo $header;
 				<h3 id="price_output" class="own-h3">Price: ~</h3>
 
 				<div class="input-group mb-3">
-					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required>
+					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required='required'>
 				</div>
-				<div class="has-text-align-center button-wrap">
-					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="displayMap();">
-						Request delivery
+				<div class="has-text-align-center button-wrap"> 
+					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="php_function_call('sendRequestToServer',[ email_input.value,start_gps_location_input.value,startTime_input.value]); displayMap();">
+					Request delivery
 					</button>
 				</div>
 			</form>
@@ -220,7 +220,7 @@ echo $header;
 	<section class="page-section bg-dark text-white">
 		<div class="container text-center">
 			<h2 class="mb-4">Subscribe for latest updates!</h2>
- 
+
 			<div class="tnp tnp-subscription">
 				<form method="post" action="https://dronorder.net/?na=s" onsubmit="return newsletter_check(this)">
 
@@ -264,17 +264,6 @@ echo $header;
 
 
 
-<?php
-
-function sendMail($requesterMail, $startCoordinates, $endCoordinates, $date)
-{
-	$subject = "New Delivery request";
-	$content = 'From: ' . $requesterMail . ' \n StartCoordinates: ' . $startCoordinates . ' \n EndCoordinates: ' . $endCoordinates . ' \n Date: ' . $date;
-	$recipient = "request@stockvoting.net";
-	// $mailheader = "From: alex@treib \r\n";
-	mail($recipient, $subject, $content) or die("Error!");
-}
-?>
 
 <?php get_template_part('template-parts/footer-menus-widgets'); ?>
 

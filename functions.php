@@ -795,6 +795,22 @@ add_action(
     'wps_scripts'
 );
 
+function send_receive_ajax_script()
+{
+
+	wp_enqueue_script('send_receive_scriptName', get_template_directory_uri() . '/js/send_receive.js');
+
+	wp_localize_script(
+		'send_receive_scriptName',
+		'ajax_unique',
+		array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'title' => get_the_title(),
+			'user_id' => get_current_user_id()
+		)
+	);
+}
+add_action('wp_enqueue_scripts', 'send_receive_ajax_script');
 
 // Register scripts
 function register_scripts()
@@ -805,3 +821,78 @@ function register_scripts()
     }
 }
 add_action('wp_enqueue_scripts', 'register_scripts');
+
+
+
+function sendRequestToServer($email,$startLoc,$startTime)
+{
+	$endpoint = 'http://h2881013.stratoserver.net:8080';
+
+	$body = [
+		'email'=>$email,
+		'startLoc'=>$startLoc,
+		'startTime'=>$startTime
+	];
+
+	$body = wp_json_encode($body);
+
+	$options = [
+		'body'        => $body,
+		'headers'     => [
+			'Content-Type' => 'application/json',
+		],
+		'timeout'     => 60,
+		'redirection' => 5,
+		'blocking'    => true,
+		'httpversion' => '1.0',
+		'sslverify'   => false,
+		'data_format' => 'body',
+	];
+
+	wp_remote_post($endpoint, $options);
+}
+
+
+
+
+
+function php_function_call()
+{
+    $aResult = array();
+
+    // todo: call directPhpFunc -> problem with arguments 
+
+    if (!isset($_POST['functionname'])) {
+        $aResult['error'] = 'No function name!';
+    }
+    if (!isset($_POST['arguments'])) {
+        $aResult['error'] = 'No function arguments!';
+    }
+    if (!isset($aResult['error'])) {
+        switch ($_POST['functionname']) {
+            case 'sendRequestToServer':
+                if (!is_array($_POST['arguments']) || (count($_POST['arguments']) < 2)) {
+                    $aResult['error'] = 'Error in arguments!';
+                } else {
+                    $argumentList = $_POST['arguments'];
+					
+					$email=$argumentList[0];
+					$startLoc=$argumentList[1];
+					$startTime=$argumentList[2]; 
+
+                    $aResult['result'] = sendRequestToServer($email,$startLoc,$startTime);
+                }
+                break;
+
+            default:
+                $aResult['error'] = 'Not found function ' . $_POST['functionname'] . '!';
+                break;
+        }
+    }
+
+    echo json_encode($aResult);
+    wp_die(); // avoiding 0
+
+}
+add_action('wp_ajax_nopriv_php_function_call', 'php_function_call');
+add_action('wp_ajax_php_function_call', 'php_function_call');

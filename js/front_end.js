@@ -27,6 +27,7 @@ function checkForm() {
   return true;
 }
 
+
 // Set the marker on maps
 function displayMap() {
   var start_gps_location_id = document.getElementById(
