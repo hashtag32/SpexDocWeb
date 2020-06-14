@@ -188,7 +188,7 @@ echo $header;
 	<section class="page-section bg-dark text-white">
 		<div class="container text-center">
 			<h2 class="mb-4">Become a registered pilot and earn money!</h2>
-			<a class="btn btn-light btn-xl" href="https://dronorder.net/contact/">Register here</a>
+			<a class="btn btn-light btn-xl" href="https://dronorder.net/pilot-registration/">Register here</a>
 		</div>
 	</section>
 	<!-- Testimonials-->
