@@ -123,20 +123,42 @@ get_header();
 					</button>
 				</div>
 			</form>
-
 		</div>
 	</section>
+
+	<!-- Modal/Popup for Buying Shares -->
+	<div class="modal fade" id="submissionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h5 class="modal-title col-12 text-center">Drone delivery requested</h5>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<h2 class=" has-text-align-center">Please check your mails</h2>
+				</div>
+
+				<!-- Footer group -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Maps -->
 	<section id="section-maps" style="display: none;" class="page-section bg-black text-white">
 		<div class="container text-center">
 			<h2 class="mb-4 own-h2">Watch your delivery!</h2>
-			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h2>
-				<h3 id="price_output" class="mb-4 own-h3">Price: ~</h2>
-					<div style="color:black;" id="map-canvas" class="flight-map">
-					</div>
+			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h3>
+			<h3 id="price_output" class="mb-4 own-h3">Price: ~</h3>
+			<div style="color:black;" id="map-canvas" class="flight-map"></div>
 		</div>
-
 	</section>
+
 	<!-- Services-->
 	<section class="page-section bg-white" id="services">
 		<div class="container">

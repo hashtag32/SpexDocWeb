@@ -182,4 +182,10 @@ function requestDelivery(button,
     start_gps_location_input,
     startTime_input,
   ]);
+
+  $("#submissionModal").modal();
 }
+
+
+function initMap() {} // Implement for google maps api -> now: only to remove error 
+
