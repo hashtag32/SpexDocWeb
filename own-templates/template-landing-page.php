@@ -11,19 +11,9 @@
 
 
 // Skip the front page
-// if (is_user_logged_in()) {
-// 	wp_redirect("https://stockvoting.net/front-page");
-// }
 
-ob_start();
 get_header();
-$header = ob_get_clean();
-$header = preg_replace('#<title>(.*?)<\/title>#', '<title>' . "Dronorder - Drone Delivery Service" . '</title>', $header);
-echo $header;
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 	<meta charset="utf-8" />
@@ -90,27 +80,27 @@ echo $header;
 		<div class="container">
 			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
 
-			<form method="post" action="" onsubmit="">
+			<form method="post" action="" class="schedule_flight_form" onsubmit="">
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
 				<div class="input-group mb-3">
-					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required>
+					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required='required'>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-					<div style="margin:auto;width:90%" class="input-group-append">
+					<div style="margin-right:2em;" class="input-group-append float-right">
 						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z">
+						<a target="_blank" href="https://www.google.com/maps/@38.4440305,-104.1334375,4.95z">
 							<span class="input-group-text " id="basic-addon2">Search on Maps</span>
 						</a>
 					</div>
 				</div>
 
 				<div class="input-group mb-3">
-					<input id="end_gps_location_input" placeholder="End GPS Location" class="input-form" type="text" name="ne" required>
+					<input id="end_gps_location_input" placeholder="End GPS Location" class="input-form" type="text" required>
 					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-					<div style="margin:auto;width:90%" class="input-group-append">
+					<div style="margin-right:2em;" class="input-group-append float-right">
 						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@49.406876,6.9686856,15z">
+						<a target="_blank" href="https://www.google.com/maps/@38.4440305,-104.1334375,4.95z">
 							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
 						</a>
 					</div>
@@ -118,17 +108,17 @@ echo $header;
 
 
 				<div class="has-text-align-center button-wrap">
-					<button id="preview_flight_button" class="smart-button" type="submit" value="preview_flight_button" onClick="displayMap();">
+					<button id="preview_flight_button" class="smart-button" type="submit" value="preview_flight_button" onClick="displayMap(this);">
 						Preview Flight
 					</button>
 				</div>
 
 
 				<div class="input-group mb-3">
-					<input id="email_input" placeholder="Email" class="input-form " type="text" name="ne" required='required'>
+					<input id="email_input" placeholder="Email" class="input-form " type="email" name="ne" required='required'>
 				</div>
 				<div class="has-text-align-center button-wrap">
-					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="php_function_call('sendRequestToServer',[ email_input.value,start_gps_location_input.value,startTime_input.value]); ">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="requestDelivery(this,email_input.value,start_gps_location_input.value,startTime_input.value); ">
 						Request delivery
 					</button>
 				</div>
@@ -143,7 +133,7 @@ echo $header;
 			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h2>
 				<h3 id="price_output" class="mb-4 own-h3">Price: ~</h2>
 					<div style="color:black;" id="map-canvas" class="flight-map">
-				</div>
+					</div>
 		</div>
 
 	</section>
@@ -267,7 +257,6 @@ echo $header;
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS9C0YTzYEEbq4U6nrSlgo5q_CHMPl1MQ&callback=initMap">
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
 
 

@@ -5,6 +5,29 @@ $(document).ready(function () {
   setGPSPosition();
 });
 
+window.addEventListener(
+  "load",
+  function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName("schedule_flight_form");
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          console.log("fired");
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  },
+  false
+);
 
 function setGPSPosition() {
   // Read in GPS location
@@ -17,12 +40,29 @@ function setGPSPosition() {
   });
 }
 
-function checkForm() {
-  return true;
+function checkFormPreFlight() {
+  // Date
+  var startTimeObj = document.getElementById("startTime_input");
+  var form_Validity = startTimeObj.checkValidity();
+
+  // GPS Locations
+  var startGPSObj = document.getElementById("start_gps_location_input");
+  form_Validity &= startGPSObj.checkValidity();
+
+  var endGPSObj = document.getElementById("end_gps_location_input");
+  form_Validity &= endGPSObj.checkValidity();
+
+  return form_Validity;
 }
 
 // Set the marker on maps
-function displayMap() {
+function displayMap(button) {
+  if (!checkFormPreFlight()) {
+    return;
+  }
+
+  button.disabled=true;
+
   var start_gps_location_id = document.getElementById(
     "start_gps_location_input"
   );
@@ -111,40 +151,35 @@ function displayMap() {
 
   // Formatting
   $("#section-maps").fadeIn("slow");
-  $('html,body').animate({scrollTop: $('#section-maps').offset().top}, 800 );
-
+  $("html,body").animate({ scrollTop: $("#section-maps").offset().top }, 800);
 }
 
-// General functions
+function checkFormRequestDelivery() {
+  // Previous form valid?
+  var form_Validity = checkFormPreFlight();
 
-function price(distance_m) {
-  // 2.5$ fixed + 1$ per 200m
-  return 2.5 + (1 * distance_m) / 200;
+  // Email valid
+  var emailObj = document.getElementById("email_input");
+  form_Validity &= emailObj.checkValidity();
+
+  return form_Validity;
 }
 
-function distance(lat1, lon1, lat2, lon2, unit) {
-  if (lat1 == lat2 && lon1 == lon2) {
-    return 0;
-  } else {
-    var radlat1 = (Math.PI * lat1) / 180;
-    var radlat2 = (Math.PI * lat2) / 180;
-    var theta = lon1 - lon2;
-    var radtheta = (Math.PI * theta) / 180;
-    var dist =
-      Math.sin(radlat1) * Math.sin(radlat2) +
-      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta); 
-    if (dist > 1) {
-      dist = 1;
-    }
-    dist = Math.acos(dist);
-    dist = (dist * 180) / Math.PI;
-    dist = dist * 60 * 1.1515;
-    if (unit == "K") {
-      dist = dist * 1.609344;
-    }
-    if (unit == "N") {
-      dist = dist * 0.8684;
-    }
-    return dist;
+function requestDelivery(button,
+  email_input,
+  start_gps_location_input,
+  startTime_input
+) {
+  
+  if (!checkFormRequestDelivery()) {
+    return;
   }
+
+  button.disabled = true;
+
+  php_function_call("sendRequestToServer", [
+    email_input,
+    start_gps_location_input,
+    startTime_input,
+  ]);
 }

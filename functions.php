@@ -767,7 +767,7 @@ function twentytwenty_get_elements_array() {
 
 
 
-
+ 
 
 // Include bootstrap
 function wps_scripts() {
