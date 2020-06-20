@@ -36,6 +36,17 @@ get_header();
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/own_styles.css" />
 
 
+	<!-- Load Leaflet from CDN-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+
+	<!-- Load Esri Leaflet from CDN -->
+	<script src="https://unpkg.com/esri-leaflet"></script>
+
+	<!-- Esri Leaflet Geocoder -->
+	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
+	<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -86,14 +97,10 @@ get_header();
 				</div>
 
 				<div style="height:350px;" id="mapid" class="flight-map"></div>
-
-
 				<div id="DistanceAndPriceId" class="container" style="display:none">
 					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
 					<h3 id="price_output" class="mb-4 own-h3"></h3>
 				</div>
-
-
 
 				<div class="input-group mb-3">
 					<input id="email_input" placeholder="Email" class="input-form " type="email" name="ne" required='required'>
@@ -130,131 +137,6 @@ get_header();
 		</div>
 	</div>
 
-	<!-- Maps -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
-
-	<script>
-		var TotalMarker = new Array();
-		var connectionPolyList;
-
-		var mymap = L.map('mapid').setView([38.4440305, -104.1334375], 3);
-
-		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			id: 'mapbox/streets-v11',
-			tileSize: 512,
-			zoomOffset: -1
-		}).addTo(mymap);
-
-
-		var popup = L.popup();
-
-		function onLocationFound(e) {
-			console.log("location found");
-			var radius = e.accuracy;
-
-			var locationMarkerOptions = {
-					title: "You are here",
-					riseOnHover: true,
-					opacity:0.5,
-				}
-			
-			L.marker(e.latlng,locationMarkerOptions).addTo(mymap)
-				.bindPopup("You are here").openPopup();
-
-			// L.circle(e.latlng, radius).addTo(mymap);
-		}
-
-		mymap.on('locationfound', onLocationFound);
-
-		// wrap map.locate in a function    
-		function locate() {
-			mymap.locate({
-				setView: true,
-				maxZoom: 15
-			});
-		}
-
-		// call locate every 3 seconds... forever
-		setTimeout(locate, 500);
-
-
-		function onMapClick(e) {
-			if (TotalMarker.length == 0) {
-				// Start Point
-				//Todo: add custom icon 
-				var markerOptionsStart = {
-					title: "Start",
-					clickable: true,
-					draggable: true,
-				}
-				
-
-				var LamMarker = new L.marker(e.latlng, markerOptionsStart).bindPopup("<b>Start Point</b>").openPopup();
-				TotalMarker.push(LamMarker);
-				mymap.addLayer(LamMarker);
-			} else if (TotalMarker.length == 1) {
-				// End Point
-				var markerOptionsEnd = {
-					title: "End",
-					clickable: true,
-					draggable: true
-				}
-
-				var LamMarker = new L.marker(e.latlng, markerOptionsEnd).bindPopup("<b>End Point</b>").openPopup();
-				TotalMarker.push(LamMarker);
-				mymap.addLayer(LamMarker);
-
-				// Planning finished
-				var pointA = new L.LatLng(TotalMarker[0]._latlng.lat, TotalMarker[0]._latlng.lng);
-				var pointB = new L.LatLng(TotalMarker[1]._latlng.lat, TotalMarker[1]._latlng.lng);
-				drawLine(pointA, pointB);
-
-				// SetDistanceAndPrice
-				SetDistanceAndPrice();
-
-			} else if (TotalMarker.length > 1) {
-				deleteAllMarkers();
-			}
-		}
-
-		mymap.on('click', onMapClick);
-
-
-		function deleteAllMarkers() {
-			for (i = 0; i < TotalMarker.length; i++) {
-				mymap.removeLayer(TotalMarker[i]);
-			}
-			mymap.removeLayer(connectionPolyList);
-			TotalMarker = new Array();
-			document.getElementById("distance_output").innerText ="";
-			document.getElementById("price_output").innerText ="";
-		}
-
-		function drawLine(pointA, pointB) {
-			var pointList = [pointA, pointB];
-
-			connectionPolyList = new L.Polyline(pointList, {
-				color: 'red',
-				weight: 3,
-				opacity: 0.5,
-				smoothFactor: 1
-			});
-			mymap.addLayer(connectionPolyList);
-
-		}
-
-		function triggerCalculations() {
-
-		}
-	</script>
-
-
 	<!-- Services-->
 	<section class="page-section bg-white" id="services">
 		<div class="container">
@@ -278,7 +160,7 @@ get_header();
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
 						<i class="fas fa-4x fa-address-card text-primary mb-4"></i>
-						<h3 class="h4 mb-2">50k+ Listed Pilots</h3>
+						<h3 class="h4 mb-2">200k+ Listed Pilots</h3>
 						<p class="text-muted mb-0">Drone pilots are waiting for you for your first flight!</p>
 					</div>
 				</div>

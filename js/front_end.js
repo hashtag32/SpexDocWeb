@@ -195,4 +195,3 @@ function requestDelivery(
   $("#submissionModal").modal();
 }
 
-function initMap() {} // Implement for google maps api -> now: only to remove error
