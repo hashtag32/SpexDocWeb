@@ -84,41 +84,22 @@ get_header();
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
-				<div class="input-group mb-3">
-					<input id="start_gps_location_input" style="margin-bottom:0px" placeholder="Start GPS Location" class="input-form " type="text" name="ne" required='required'>
-					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-					<div style="margin-right:2em;" class="input-group-append float-right">
-						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@38.4440305,-104.1334375,4.95z">
-							<span class="input-group-text " id="basic-addon2">Search on Maps</span>
-						</a>
-					</div>
-				</div>
 
-				<div class="input-group mb-3">
-					<input id="end_gps_location_input" placeholder="End GPS Location" class="input-form" type="text" required>
-					<!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-					<div style="margin-right:2em;" class="input-group-append float-right">
-						<!-- todo:start coordinates here -->
-						<a target="_blank" href="https://www.google.com/maps/@38.4440305,-104.1334375,4.95z">
-							<span class="input-group-text " id="basic-addon2">Search on Maps </span>
-						</a>
-					</div>
-				</div>
+				<div style="height:350px;" id="mapid" class="flight-map"></div>
 
 
-				<div class="has-text-align-center button-wrap">
-					<button id="preview_flight_button" class="smart-button" type="submit" value="preview_flight_button" onClick="displayMap(this);">
-						Preview Flight
-					</button>
+				<div id="DistanceAndPriceId" class="container" style="display:none">
+					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
+					<h3 id="price_output" class="mb-4 own-h3"></h3>
 				</div>
+
 
 
 				<div class="input-group mb-3">
 					<input id="email_input" placeholder="Email" class="input-form " type="email" name="ne" required='required'>
 				</div>
 				<div class="has-text-align-center button-wrap">
-					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="requestDelivery(this,email_input.value,start_gps_location_input.value,startTime_input.value); ">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="requestDelivery(this,email_input.value,startTime_input.value); ">
 						Request delivery
 					</button>
 				</div>
@@ -150,14 +131,129 @@ get_header();
 	</div>
 
 	<!-- Maps -->
-	<section id="section-maps" style="display: none;" class="page-section bg-black text-white">
-		<div class="container text-center">
-			<h2 class="mb-4 own-h2">Watch your delivery!</h2>
-			<h3 id="distance_output" class="mb-4 own-h3 ">Distance: </h3>
-			<h3 id="price_output" class="mb-4 own-h3">Price: ~</h3>
-			<div style="color:black;" id="map-canvas" class="flight-map"></div>
-		</div>
-	</section>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+
+	<script>
+		var TotalMarker = new Array();
+		var connectionPolyList;
+
+		var mymap = L.map('mapid').setView([38.4440305, -104.1334375], 3);
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			id: 'mapbox/streets-v11',
+			tileSize: 512,
+			zoomOffset: -1
+		}).addTo(mymap);
+
+
+		var popup = L.popup();
+
+		function onLocationFound(e) {
+			console.log("location found");
+			var radius = e.accuracy;
+
+			var locationMarkerOptions = {
+					title: "You are here",
+					riseOnHover: true,
+					opacity:0.5,
+				}
+			
+			L.marker(e.latlng,locationMarkerOptions).addTo(mymap)
+				.bindPopup("You are here").openPopup();
+
+			// L.circle(e.latlng, radius).addTo(mymap);
+		}
+
+		mymap.on('locationfound', onLocationFound);
+
+		// wrap map.locate in a function    
+		function locate() {
+			mymap.locate({
+				setView: true,
+				maxZoom: 15
+			});
+		}
+
+		// call locate every 3 seconds... forever
+		setTimeout(locate, 500);
+
+
+		function onMapClick(e) {
+			if (TotalMarker.length == 0) {
+				// Start Point
+				//Todo: add custom icon 
+				var markerOptionsStart = {
+					title: "Start",
+					clickable: true,
+					draggable: true,
+				}
+				
+
+				var LamMarker = new L.marker(e.latlng, markerOptionsStart).bindPopup("<b>Start Point</b>").openPopup();
+				TotalMarker.push(LamMarker);
+				mymap.addLayer(LamMarker);
+			} else if (TotalMarker.length == 1) {
+				// End Point
+				var markerOptionsEnd = {
+					title: "End",
+					clickable: true,
+					draggable: true
+				}
+
+				var LamMarker = new L.marker(e.latlng, markerOptionsEnd).bindPopup("<b>End Point</b>").openPopup();
+				TotalMarker.push(LamMarker);
+				mymap.addLayer(LamMarker);
+
+				// Planning finished
+				var pointA = new L.LatLng(TotalMarker[0]._latlng.lat, TotalMarker[0]._latlng.lng);
+				var pointB = new L.LatLng(TotalMarker[1]._latlng.lat, TotalMarker[1]._latlng.lng);
+				drawLine(pointA, pointB);
+
+				// SetDistanceAndPrice
+				SetDistanceAndPrice();
+
+			} else if (TotalMarker.length > 1) {
+				deleteAllMarkers();
+			}
+		}
+
+		mymap.on('click', onMapClick);
+
+
+		function deleteAllMarkers() {
+			for (i = 0; i < TotalMarker.length; i++) {
+				mymap.removeLayer(TotalMarker[i]);
+			}
+			mymap.removeLayer(connectionPolyList);
+			TotalMarker = new Array();
+			document.getElementById("distance_output").innerText ="";
+			document.getElementById("price_output").innerText ="";
+		}
+
+		function drawLine(pointA, pointB) {
+			var pointList = [pointA, pointB];
+
+			connectionPolyList = new L.Polyline(pointList, {
+				color: 'red',
+				weight: 3,
+				opacity: 0.5,
+				smoothFactor: 1
+			});
+			mymap.addLayer(connectionPolyList);
+
+		}
+
+		function triggerCalculations() {
+
+		}
+	</script>
+
 
 	<!-- Services-->
 	<section class="page-section bg-white" id="services">

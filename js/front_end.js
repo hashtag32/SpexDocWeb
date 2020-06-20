@@ -2,7 +2,6 @@ var $ = jQuery;
 //Front End Navigation
 $(document).ready(function () {
   // frontEndFunctions();
-  setGPSPosition();
 });
 
 window.addEventListener(
@@ -46,11 +45,7 @@ function checkFormPreFlight() {
   var form_Validity = startTimeObj.checkValidity();
 
   // GPS Locations
-  var startGPSObj = document.getElementById("start_gps_location_input");
-  form_Validity &= startGPSObj.checkValidity();
-
-  var endGPSObj = document.getElementById("end_gps_location_input");
-  form_Validity &= endGPSObj.checkValidity();
+  //todo
 
   return form_Validity;
 }
@@ -61,7 +56,7 @@ function displayMap(button) {
     return;
   }
 
-  button.disabled=true;
+  button.disabled = true;
 
   var start_gps_location_id = document.getElementById(
     "start_gps_location_input"
@@ -99,14 +94,6 @@ function displayMap(button) {
   var middleLong = (startLong + endLong) / 2;
   var middleLat = (startLat + endLat) / 2;
 
-  var total_dist_km = distance(startLat, startLong, endLat, endLong, "K");
-  total_dist_m = (total_dist_km * 1000).toFixed(2);
-  document.getElementById("distance_output").innerText += total_dist_m + " m";
-
-  var price_dollar = price(total_dist_m);
-
-  document.getElementById("price_output").innerText += price_dollar + " $";
-
   var locations = [
     ["Start Point", startLat, startLong],
     ["End Point", endLat, endLong],
@@ -128,7 +115,6 @@ function displayMap(button) {
   map.fitBounds(latlngbounds);
 
   var infowindow = new google.maps.InfoWindow();
-
   var marker, i;
 
   for (i = 0; i < locations.length; i++) {
@@ -148,10 +134,30 @@ function displayMap(button) {
       })(marker, i)
     );
   }
+}
 
-  // Formatting
-  $("#section-maps").fadeIn("slow");
-  $("html,body").animate({ scrollTop: $("#section-maps").offset().top }, 800);
+function SetDistanceAndPrice() {
+  var startLat = TotalMarker[0]._latlng.lat;
+  var startLng = TotalMarker[0]._latlng.lng;
+  var endLat = TotalMarker[1]._latlng.lat;
+  var endLng = TotalMarker[1]._latlng.lng;
+
+  // Input: TotalMarker
+  SetDistance(distance(startLat, startLng, endLat, endLng, "K"));
+  SetPrice(price(total_dist_m));
+  $("#DistanceAndPriceId").fadeIn("slow");
+}
+
+function SetDistance(total_dist_km) {
+  total_dist_m = (total_dist_km * 1000).toFixed(2);
+  document.getElementById("distance_output").innerText =
+    "Distance: " + total_dist_m + " m";
+}
+
+function SetPrice(price_dollar) {
+  price_dollar_fixed = price_dollar.toFixed(2);
+  document.getElementById("price_output").innerText =
+    "Price: " + price_dollar_fixed + " $";
 }
 
 function checkFormRequestDelivery() {
@@ -165,27 +171,28 @@ function checkFormRequestDelivery() {
   return form_Validity;
 }
 
-function requestDelivery(button,
+function requestDelivery(
+  button,
   email_input,
-  start_gps_location_input,
   startTime_input
 ) {
-  
   if (!checkFormRequestDelivery()) {
     return;
   }
+
+  var startLat = TotalMarker[0]._latlng.lat;
+  var startLng = TotalMarker[0]._latlng.lng;
 
   button.disabled = true;
 
   php_function_call("sendRequestToServer", [
     email_input,
-    start_gps_location_input,
+    startLat,
+    startLng,
     startTime_input,
   ]);
 
   $("#submissionModal").modal();
 }
 
-
-function initMap() {} // Implement for google maps api -> now: only to remove error 
-
+function initMap() {} // Implement for google maps api -> now: only to remove error

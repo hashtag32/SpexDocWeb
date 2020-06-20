@@ -824,13 +824,14 @@ add_action('wp_enqueue_scripts', 'register_scripts');
 
 
 
-function sendRequestToServer($email, $startLoc, $startTime)
+function sendRequestToServer($email, $startLat,$startLng, $startTime)
 {
 	$endpoint = 'http://h2881013.stratoserver.net:8080';
 
 	$body = [
 		'email' => $email,
-		'startLoc' => $startLoc,
+		'startLat' => $startLat,
+		'startLng' => $startLng,
 		'startTime' => $startTime
 	];
 
@@ -893,10 +894,11 @@ function php_function_call()
                     $argumentList = $_POST['arguments'];
 					
 					$email = $argumentList[0];
-					$startLoc = $argumentList[1];
-					$startTime = $argumentList[2];
+					$startLat = $argumentList[1];
+					$startLng = $argumentList[2];
+					$startTime = $argumentList[3];
 
-					$aResult['result'] = sendRequestToServer($email, $startLoc, $startTime);
+					$aResult['result'] = sendRequestToServer($email, $startLat, $startLng, $startTime);
 					if (is_wp_error($aResult['result'])) {
 						$aResult['error'] = true;
 						send_mail($argumentList);
