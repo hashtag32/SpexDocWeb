@@ -96,7 +96,7 @@ get_header();
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
 
-				<div style="height:350px;" id="mapid" class="flight-map"></div>
+				<div style="height:450px;" id="mapid" class="flight-map"></div> 
 				<div id="DistanceAndPriceId" class="container" style="display:none">
 					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
 					<h3 id="price_output" class="mb-4 own-h3"></h3>
