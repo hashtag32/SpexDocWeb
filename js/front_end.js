@@ -168,14 +168,19 @@ function checkFormRequestDelivery() {
   var emailObj = document.getElementById("email_input");
   form_Validity &= emailObj.checkValidity();
 
+  if (TotalMarker.length != 2) {
+    $("#HowToMapID").modal();
+    console.log("test");
+    
+    document.getElementById("HowToVideoID").style.height = "100%";
+    document.getElementById("HowToVideoID").style.width = "100%";
+    document.getElementById("HowToVideoID").play();
+  }
+
   return form_Validity;
 }
 
-function requestDelivery(
-  button,
-  email_input,
-  startTime_input
-) {
+function requestDelivery(button, email_input, startTime_input) {
   if (!checkFormRequestDelivery()) {
     return;
   }

@@ -95,8 +95,8 @@ get_header();
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
-
-				<div style="height:450px;" id="mapid" class="flight-map"></div> 
+			
+				<div style="height:450px;" id="mapid" class="flight-map"></div>
 				<div id="DistanceAndPriceId" class="container" style="display:none">
 					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
 					<h3 id="price_output" class="mb-4 own-h3"></h3>
@@ -114,7 +114,24 @@ get_header();
 		</div>
 	</section>
 
-	<!-- Modal/Popup for Buying Shares -->
+
+	<!-- Modal/Popup for How To Map -->
+	<div class="modal fade" id="HowToMapID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div id="HowToVideoDivID">
+						<video id="HowToVideoID" controls loop autoplay>
+							<source src="https://dronorder.net/wp-content/uploads/2020/06/howto_map.mp4" type="video/mp4" />
+							Your browser does not support the video tag.
+						</video> 
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal/Popup for Submission -->
 	<div class="modal fade" id="submissionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
