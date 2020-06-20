@@ -5,7 +5,7 @@ var connectionPolyList;
 function initMap() {
   mymap = L.map("mapid").setView([38.4440305, -104.1334375], 3);
 
-  googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+  googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(mymap);
