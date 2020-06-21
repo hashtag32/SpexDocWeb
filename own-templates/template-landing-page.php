@@ -95,7 +95,7 @@ get_header();
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
-			
+
 				<div style="height:450px;" id="mapid" class="flight-map"></div>
 				<div id="DistanceAndPriceId" class="container" style="display:none">
 					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
@@ -119,13 +119,22 @@ get_header();
 	<div class="modal fade" id="HowToMapID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title col-12 text-center">How To</h5>
+				</div>
+
 				<div class="modal-body">
 					<div id="HowToVideoDivID">
 						<video id="HowToVideoID" controls loop autoplay>
 							<source src="https://dronorder.net/wp-content/uploads/2020/06/howto_map.mp4" type="video/mp4" />
 							Your browser does not support the video tag.
-						</video> 
-					</div> 
+						</video>
+					</div>
+				</div>
+
+				<!-- Footer group -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
