@@ -91,7 +91,7 @@ get_header();
 		<div class="container">
 			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
 
-			<form method="post" action="" class="schedule_flight_form" onsubmit="">
+			<form method="post" class="schedule_flight_form">
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
@@ -103,7 +103,7 @@ get_header();
 				</div>
 
 				<div class="input-group mb-3">
-					<input id="email_input" placeholder="Email" class="input-form " type="email" name="ne" required='required'>
+					<input id="email_input" placeholder="enter email" class="input-form" type="email" name="ne" required='required'>
 				</div>
 				<div class="has-text-align-center button-wrap">
 					<button id="request_delivery_button" class="smart-button" type="submit" value="request_delivery_button" onClick="requestDelivery(this,email_input.value,startTime_input.value); ">

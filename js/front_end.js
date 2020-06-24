@@ -137,13 +137,16 @@ function displayMap(button) {
 }
 
 function SetDistanceAndPrice() {
-  var startLat = TotalMarker[0]._latlng.lat;
-  var startLng = TotalMarker[0]._latlng.lng;
-  var endLat = TotalMarker[1]._latlng.lat;
-  var endLng = TotalMarker[1]._latlng.lng;
-
   // Input: TotalMarker
-  SetDistance(distance(startLat, startLng, endLat, endLng, "K"));
+  SetDistance(
+    distance(
+      TotalMarker[0]._latlng.lat,
+      TotalMarker[0]._latlng.lng,
+      TotalMarker[1]._latlng.lat,
+      TotalMarker[1]._latlng.lng,
+      "K"
+    )
+  );
   SetPrice(price(total_dist_m));
   $("#DistanceAndPriceId").fadeIn("slow");
 }
@@ -171,7 +174,7 @@ function checkFormRequestDelivery() {
   if (TotalMarker.length != 2) {
     $("#HowToMapID").modal();
     console.log("test");
-    
+
     document.getElementById("HowToVideoID").style.height = "100%";
     document.getElementById("HowToVideoID").style.width = "100%";
     document.getElementById("HowToVideoID").play();
@@ -199,4 +202,3 @@ function requestDelivery(button, email_input, startTime_input) {
 
   $("#submissionModal").modal();
 }
-
