@@ -51,21 +51,18 @@
     padding: 10px;
 }
 
-
-.smart-button[value="request_delivery_button"], .smart-button[value="preview_flight_button"] {
+.smart-button[value="black"]{
     background-color: black;
 }
 
-
-.smart-button[value="subscription-button"], .smart-button[value="letsgo-button"]  {
+.smart-button[value="orange"]  {
     background-color: #f4623a;
 }
 
-
-.smart-button:hover {
-    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
-    transform: translateY(-7px);
+.smart-button[value="orange"]:hover {
+    background-color: black;
 }
+
 
 .own-h3 {
     font-size: 30px;
@@ -129,24 +126,6 @@
     font-size: 40px;
 }
 
-
-.letsgo-button {
-    width: 350px;
-    color: white;
-    background-color: #f4623a;
-    letter-spacing: 2.5px;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    margin: 20px;
-}
-
-.letsgo-button:hover {
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
-    transform: translateY(-7px);
-}
 
 .flight-map {
     width: 100%;
@@ -243,3 +222,12 @@ h6 {
 	-webkit-transform: scale(1.15); /* Safari 3-8 */
 	transform: scale(1.15); 
 }
+
+/* Use this with an empty span in div
+Upper div has to have a position:relative */
+.fill-div-with-link{
+	position:absolute; 
+	width:100%; 
+	height:100%; 
+	/* z-index: 1; */
+} 

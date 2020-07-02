@@ -18,7 +18,7 @@ $has_sidebar_2 = is_active_sidebar( 'sidebar-2' );
 if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) {
 	?>
 
-	<div class="footer-nav-widgets-wrapper header-footer-group">
+	<div class="footer-nav-widgets-wrapper  header-footer-group">
 
 		<div class="footer-inner section-inner">
 
@@ -31,10 +31,10 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 
 			if ( $has_footer_menu || $has_social_menu ) {
 				?>
-				<div class="footer-top<?php echo $footer_top_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
+				<div class=" footer-top<?php echo $footer_top_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>">
 					<?php if ( $has_footer_menu ) { ?>
 
-						<nav aria-label="<?php esc_attr_e( 'Footer', 'twentytwenty' ); ?>" role="navigation" class="footer-menu-wrapper">
+						<nav aria-label="has-text-align-center <?php esc_attr_e( 'Footer', 'twentytwenty' ); ?>" role="navigation" class="footer-menu-wrapper">
 
 							<ul class="footer-menu reset-list-style">
 								<?php
