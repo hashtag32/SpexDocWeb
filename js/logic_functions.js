@@ -1,13 +1,13 @@
 // General functions
 
 function price(distance_m) {
-  // 2.5$ fixed + 0.5$ per 1000m
-  return 2.5 + (0.5 * distance_m) / 1000;
+  // 2$ fixed + 0.75$ per 1000m
+  return 2 + (0.75 * distance_m) / 1000;
 }  
 
 function distance(lat1, lon1, lat2, lon2, unit) {
   if (lat1 == lat2 && lon1 == lon2) {
-    return 0;
+    return 0; 
   } else {
     var radlat1 = (Math.PI * lat1) / 180;
     var radlat2 = (Math.PI * lat2) / 180;

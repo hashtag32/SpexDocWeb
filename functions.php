@@ -822,8 +822,8 @@ function register_scripts()
 }
 add_action('wp_enqueue_scripts', 'register_scripts');
 
-
-
+ 
+ 
 function sendRequestToServer($email, $startLat,$startLng, $startTime)
 {
 	$endpoint = 'http://h2881013.stratoserver.net:8080';

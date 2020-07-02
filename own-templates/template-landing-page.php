@@ -152,8 +152,11 @@ get_header();
 
 				<!-- Body -->
 				<div class="modal-body">
-					<h2 class=" has-text-align-center">Please check your mails</h2>
-				</div>
+					<h2 class=" has-text-align-center">
+					Thank you! We will process your request. 
+					
+					Please check your mails</h2>
+				</div> 
 
 				<!-- Footer group -->
 				<div class="modal-footer">
