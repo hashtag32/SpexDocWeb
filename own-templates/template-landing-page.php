@@ -34,10 +34,10 @@ get_header();
 			<input style="border-radius:10px;background-color:white;" placeholder="enter email" class="input-form " type="email" name="ne" required>
 			<div class="tnp-field tnp-field-button button-wrap">
 				<button class="smart-button" type="submit" value="orange" value="Subscribe">
-					Get them for free
+					Subscribe
 				</button>
 			</div>
-		</form>
+		</form>  
 	</div>
 
 </main><!-- #site-content -->

@@ -824,16 +824,16 @@ add_action('wp_enqueue_scripts', 'register_scripts');
 
  
  
-function sendRequestToServer($email, $startLat,$startLng, $startTime, $shipped_item)
+function sendRequestToServer($email, $startLat,$startLng, $startTime, $shippedItem)
 {
-	$endpoint = 'http://h2881013.stratoserver.net:8080';
+	$endpoint = 'http://h2881013.stratoserver.net:8081';
 
 	$body = [
 		'email' => $email,
 		'startLat' => $startLat,
 		'startLng' => $startLng,
 		'startTime' => $startTime,
-		'shipped_item' => $shipped_item
+		'shippedItem' => $shippedItem,
 	];
 
 	$body = wp_json_encode($body);
@@ -898,8 +898,9 @@ function php_function_call()
 					$startLat = $argumentList[1];
 					$startLng = $argumentList[2];
 					$startTime = $argumentList[3];
+					$shippedItem= $argumentList[4];
 
-					$aResult['result'] = sendRequestToServer($email, $startLat, $startLng, $startTime);
+					$aResult['result'] = sendRequestToServer($email, $startLat, $startLng, $startTime, $shippedItem);
 					if (is_wp_error($aResult['result'])) {
 						$aResult['error'] = true;
 						send_mail($argumentList);

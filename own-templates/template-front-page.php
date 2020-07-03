@@ -90,7 +90,7 @@ get_header();
 			<form method="post" class="schedule_flight_form">
 				<!-- Date -->
 			<div class="input-group mb-3 own-input-group">
-					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
+					<input class="input-form" type="datetime-local" id="startTime_input" value="2020-10-13T13:00"  required='required'>
 				</div>
 
 				<!-- Map -->
