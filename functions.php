@@ -824,7 +824,7 @@ add_action('wp_enqueue_scripts', 'register_scripts');
 
  
  
-function sendRequestToServer($email, $startLat,$startLng, $startTime)
+function sendRequestToServer($email, $startLat,$startLng, $startTime, $shipped_item)
 {
 	$endpoint = 'http://h2881013.stratoserver.net:8080';
 
@@ -832,7 +832,8 @@ function sendRequestToServer($email, $startLat,$startLng, $startTime)
 		'email' => $email,
 		'startLat' => $startLat,
 		'startLng' => $startLng,
-		'startTime' => $startTime
+		'startTime' => $startTime,
+		'shipped_item' => $shipped_item
 	];
 
 	$body = wp_json_encode($body);

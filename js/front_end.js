@@ -39,23 +39,8 @@ function setGPSPosition() {
   });
 }
 
-function checkFormPreFlight() {
-  // Date
-  var startTimeObj = document.getElementById("startTime_input");
-  var form_Validity = startTimeObj.checkValidity();
-
-  // GPS Locations
-  //todo
-
-  return form_Validity;
-}
-
 // Set the marker on maps
 function displayMap(button) {
-  if (!checkFormPreFlight()) {
-    return;
-  }
-
   button.disabled = true;
 
   var start_gps_location_id = document.getElementById(
@@ -164,16 +149,21 @@ function SetPrice(price_dollar) {
 }
 
 function checkFormRequestDelivery() {
-  // Previous form valid?
-  var form_Validity = checkFormPreFlight();
+  var form_Validity=true;
+  // Start Time valid
+  var startTimeObj = document.getElementById("startTime_input");
+  form_Validity &= startTimeObj.checkValidity();
 
   // Email valid
   var emailObj = document.getElementById("email_input");
   form_Validity &= emailObj.checkValidity();
 
+  // Shipped Item
+  var shipped_itemObj = document.getElementById("shipped_item_id");
+  form_Validity &= shipped_itemObj.checkValidity();
+
   if (TotalMarker.length != 2) {
     $("#HowToMapID").modal();
-    console.log("test");
 
     document.getElementById("HowToVideoID").style.height = "100%";
     document.getElementById("HowToVideoID").style.width = "100%";
@@ -183,7 +173,7 @@ function checkFormRequestDelivery() {
   return form_Validity;
 }
 
-function requestDelivery(button, email_input, startTime_input) {
+function requestDelivery(button, email_input, startTime_input, shipped_item) {
   if (!checkFormRequestDelivery()) {
     return;
   }
@@ -198,6 +188,7 @@ function requestDelivery(button, email_input, startTime_input) {
     startLat,
     startLng,
     startTime_input,
+    shipped_item
   ]);
 
   $("#submissionModal").modal();

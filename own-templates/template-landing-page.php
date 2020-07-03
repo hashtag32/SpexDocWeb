@@ -24,7 +24,7 @@ get_header();
 
 	<div class="has-text-align-center">
 		<div class="site-logo faux-heading zoom-1"><a href="https://dronorder.net/" class="custom-logo-link" rel="home"><img width="86" height="71" style="height: 71px;" src="https://dronorder.net/wp-content/uploads/2020/06/Dronorder_Logo_orange.png" class="custom-logo" alt="dronorder"></a><span class="screen-reader-text">DronOrder</span></div>
-		<div class="site-description" style="color:black">Order a drone delivery flight</div><!-- .site-description -->
+		<div class="site-description" style="color:black">Package Delivery by Drones</div><!-- .site-description -->
 	</div>
 
 	<h3 class="has-text-align-center" style="padding:2rem">Get updates on our project</h3>

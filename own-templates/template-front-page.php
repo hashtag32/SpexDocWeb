@@ -24,43 +24,35 @@ get_header();
 	<link rel="icon" type="image/x-icon" href="https://dronorder.net/wp-content/themes/twentytwenty/assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Leaflet -->
+	<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+	<script src="https://unpkg.com/esri-leaflet"></script>
+	<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
 	<!-- Google fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
 	<!-- Third party plugin CSS-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/bootstrap_styles.css" />
 	<!-- Own_styles has higher priority (1. Own, then Bootstrap, then Wordpress) -->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/own_styles.css" />
 
-
-	<!-- Load Leaflet from CDN-->
+	<!-- Leaflet-->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
-
-	<!-- Load Esri Leaflet from CDN -->
-	<script src="https://unpkg.com/esri-leaflet"></script>
-
-	<!-- Esri Leaflet Geocoder -->
 	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
-	<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
-
-
-	<!-- Latest compiled and minified CSS -->
+	
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-
 </head>
 
 <body id="page-top">
@@ -77,7 +69,7 @@ get_header();
 					<hr class="divider my-4" />
 				</div>
 				<div class="col-lg-8 align-self-baseline">
-					<div class="frontpage-subtitle"> Order a drone delivery flight </div>
+					<div class="frontpage-subtitle">Package Delivery by Drones </div>
 					<div class="has-text-align-center button-wrap">
 						<a class="smart-button" value="orange" href="#scheduleFlight">Let's Go</a>
 					</div>
@@ -88,24 +80,48 @@ get_header();
 	<!-- Schedule your drone delivery -->
 	<section class="page-section bg-primary" id="scheduleFlight">
 		<div class="container">
-			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your drone delivery</h2>
-
+			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your package delivery</h2>
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<h3>A drone pilot will deliver your package from your start point to your destination </h3>
+					<h3>Just click on the map</h3>
+				</div>
+			</div>
 			<form method="post" class="schedule_flight_form">
-				<div class="input-group mb-3">
+				<!-- Date -->
+			<div class="input-group mb-3 own-input-group">
 					<input class="input-form" type="datetime-local" id="startTime_input" required='required'>
 				</div>
 
+				<!-- Map -->
 				<div style="height:450px;" id="mapid" class="flight-map"></div>
-				<div id="DistanceAndPriceId" class="container" style="display:none">
-					<h3 id="distance_output" class="mb-4 own-h3 "></h3>
-					<h3 id="price_output" class="mb-4 own-h3"></h3>
+
+				<!-- Price -->
+				<div class="input-group has-text-align-center mb-3 own-input-group">
+					<div id="DistanceAndPriceId" class="container" style="display:none">
+						<h3 id="distance_output" class="mb-4 own-h3 "></h3>
+						<h3 id="price_output" class="mb-4 own-h3"></h3>
+					</div>
 				</div>
 
-				<div class="input-group mb-3">
+				<!-- Email -->
+				<div class="input-group mb-3 own-input-group">
 					<input id="email_input" placeholder="enter email" class="input-form" type="email" name="ne" required='required'>
 				</div>
+
+				<!-- Item -->
+				<div class="input-group mb-3 own-input-group">
+					<select name="shipped_item" id="shipped_item_id" class="input-form" required='required'>
+						<option value="">Your item to ship</option>
+						<option value="Medication">Medication</option>
+						<option value="Food">Food</option>
+						<option value="Something else">Something else</option>
+					</select>
+				</div>
+
+				<!-- Button Request-->
 				<div class="has-text-align-center button-wrap">
-					<button id="request_delivery_button" class="smart-button" type="submit" value="black" onClick="requestDelivery(this,email_input.value,startTime_input.value); ">
+					<button id="request_delivery_button" class="smart-button" type="submit" value="black" onClick="requestDelivery(this,email_input.value,startTime_input.value, shipped_item_id.value ); ">
 						Request delivery
 					</button>
 				</div>
@@ -133,7 +149,7 @@ get_header();
 
 				<!-- Footer group -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					<button type="button" class="smart-button" value="black" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -159,7 +175,7 @@ get_header();
 
 				<!-- Footer group -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					<button type="button" class="smart-button" value="black" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -214,7 +230,7 @@ get_header();
 	<!-- Subscription -->
 	<section class="page-section bg-primary text-white">
 		<div class="container text-center">
-			<h2 class="mb-4">Subscribe for latest updates!</h2>
+			<h2 class="mb-4">Subscribe for latest updates on our project!</h2>
 
 			<div class="tnp tnp-subscription">
 				<form method="post" action="https://dronorder.net/?na=s" onsubmit="return newsletter_check(this)">
