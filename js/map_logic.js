@@ -4,8 +4,9 @@ var connectionPolyList;
 
 // Called through API directly
 function initMap() {
-  mymap = L.map("mapid").setView([38.4440305, -104.1334375], 3);
-
+  // Set View on LA (focused)
+  mymap = L.map("mapid").setView([34.0872909,-118.448848], 10);
+  
   googleSat = L.tileLayer(
     "https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
     {
@@ -38,8 +39,7 @@ function initMap() {
 }
 
 function onLocationFound(e) {
-  console.log("location found");
-
+// Location given by user approval
   var locationMarkerOptions = {
     title: "You are here",
     riseOnHover: true,
@@ -58,24 +58,25 @@ function onMapClick(e) {
     // Start Point
     //todo: add custom icon
     var markerOptionsStart = {
-      title: "Start",
+      title: "Pickup",
       clickable: true,
       draggable: false,
     };
     var LamMarker = new L.marker(e.latlng, markerOptionsStart)
-      .bindPopup("<b>Start Point</b>")
-      .openPopup();
-    TotalMarker.push(LamMarker);
+      .bindPopup("<b>Pickup Location</b><br>Drone will pick up your package here");
+    TotalMarker.push(LamMarker); 
     mymap.addLayer(LamMarker);
+    // Show Pickup Location
+    LamMarker.openPopup();
 
     var circleOptions = {
-    radius: 3000,
+      radius: 5000,
     };
 
     AllowedCircle = L.circle(e.latlng, circleOptions).addTo(mymap);
 
   } else if (TotalMarker.length == 1) {
-    var distance_select=distance(
+    var distance_select = distance(
       TotalMarker[0]._latlng.lat,
       TotalMarker[0]._latlng.lng,
       e.latlng.lat,
@@ -83,8 +84,10 @@ function onMapClick(e) {
       "K"
     );
 
-    if(distance_select>3)
-    {
+    if (distance_select > 5) {
+      // Click was out of allowed radius
+      // Focus back on the middle of the circle
+      mymap.setView([TotalMarker[0]._latlng.lat,TotalMarker[0]._latlng.lng],13);
       return;
     }
 
@@ -96,13 +99,15 @@ function onMapClick(e) {
     };
 
     var LamMarker = new L.marker(e.latlng, markerOptionsEnd)
-      .bindPopup("<b>End Point</b>")
-      .openPopup();
+      .bindPopup("<b>Destination Location</b><br>Drone will drop your package here");
+
     TotalMarker.push(LamMarker);
     mymap.addLayer(LamMarker);
+    // Show Pickup Location
+    LamMarker.openPopup();
 
     // Planning finished
-  mymap.removeLayer(AllowedCircle);
+    mymap.removeLayer(AllowedCircle);
 
     var pointA = new L.LatLng(
       TotalMarker[0]._latlng.lat,
@@ -133,7 +138,6 @@ function drawLine(pointA, pointB) {
 }
 
 function deleteAllMarkers() {
-  
   for (i = 0; i < TotalMarker.length; i++) {
     mymap.removeLayer(TotalMarker[i]);
   }

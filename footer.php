@@ -29,7 +29,7 @@
 
 		</div><!-- .footer-credits -->
 
-		<a class="to-the-top" href="#site-header">
+		<a class="to-the-top" href="#page-top">
 			<span class="to-the-top-long">
 				<?php
 				/* translators: %s: HTML character for up arrow. */

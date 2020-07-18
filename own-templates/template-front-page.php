@@ -49,7 +49,7 @@ get_header();
 	<!-- Leaflet-->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
-	
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
@@ -83,21 +83,26 @@ get_header();
 			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your package delivery</h2>
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
-					<h3>A drone pilot will deliver your package from your start point to your destination </h3>
-					<h3>Just click on the map</h3>
+					<h3>A drone pilot will deliver your package <br>from<br>your <b>pickup location</b> <br>to <br>your <b>destination location</b> </h3>
 				</div>
 			</div>
 			<form method="post" class="schedule_flight_form">
 				<!-- Date -->
-			<div class="input-group mb-3 own-input-group">
-					<input class="input-form" type="datetime-local" id="startTime_input" value="2020-10-13T13:00"  required='required'>
+				<div class="input-group mb-3">
+					<input class="input-form" type="datetime-local" id="startTime_input" value="2020-10-13T13:00" required='required'>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-8 text-center">
+						<h3>Just click on the map</h3>
+					</div>
 				</div>
 
 				<!-- Map -->
 				<div style="height:450px;" id="mapid" class="flight-map"></div>
 
 				<!-- Price -->
-				<div class="input-group has-text-align-center mb-3 own-input-group">
+				<div class="input-group has-text-align-center mb-3">
 					<div id="DistanceAndPriceId" class="container" style="display:none">
 						<h3 id="distance_output" class="mb-4 own-h3 "></h3>
 						<h3 id="price_output" class="mb-4 own-h3"></h3>
@@ -105,12 +110,12 @@ get_header();
 				</div>
 
 				<!-- Email -->
-				<div class="input-group mb-3 own-input-group">
+				<div class="input-group mb-3">
 					<input id="email_input" placeholder="enter email" class="input-form" type="email" name="ne" required='required'>
 				</div>
 
 				<!-- Item -->
-				<div class="input-group mb-3 own-input-group">
+				<div class="input-group mb-3">
 					<select name="shipped_item" id="shipped_item_id" class="input-form" required='required'>
 						<option value="">Your item to ship</option>
 						<option value="Medication">Medication</option>
