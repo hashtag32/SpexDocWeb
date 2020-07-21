@@ -81,21 +81,17 @@ get_header();
 	<section class="page-section bg-primary" id="scheduleFlight">
 		<div class="container">
 			<h2 class="own-h2 has-text-align-center" style="font-size:40px;font-weight:600;color:black;padding:30px">Schedule your package delivery</h2>
-			<div class="row justify-content-center">
-				<div class="col-lg-8 text-center">
-					<h3>A drone pilot will deliver your package <br>from<br>your <b>pickup location</b> <br>to <br>your <b>destination location</b> </h3>
-				</div>
+
+			<div class="has-text-align-center button-wrap">
+				<button id="request_delivery_button" class="smart-button" type="button" value="demoButton" onClick="OpenAndPlayHowToModal();">
+					View Demo
+				</button>
 			</div>
+ 
 			<form method="post" class="schedule_flight_form">
 				<!-- Date -->
 				<div class="input-group mb-3">
 					<input class="input-form" type="datetime-local" id="startTime_input" value="2020-10-13T13:00" required='required'>
-				</div>
-
-				<div class="row justify-content-center">
-					<div class="col-lg-8 text-center">
-						<h3>Just click on the map</h3>
-					</div>
 				</div>
 
 				<!-- Map -->

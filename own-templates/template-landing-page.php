@@ -11,16 +11,16 @@
 
 
 // // Skip the front page
-if (is_user_logged_in()) { 
+if (is_user_logged_in()) {
 	wp_redirect("https://dronorder.net/front-page");
 }
 
 // Skip the front page 
-get_header();  
+get_header();
 
 ?>
 
-<main id="site-content" class="landing-page" role="main"> 
+<main id="site-content" class="landing-page" role="main">
 
 	<div class="has-text-align-center">
 		<div class="site-logo faux-heading zoom-1"><a href="https://dronorder.net/" class="custom-logo-link" rel="home"><img width="86" height="71" style="height: 71px;" src="https://dronorder.net/wp-content/uploads/2020/06/Dronorder_Logo_orange.png" class="custom-logo" alt="dronorder"></a><span class="screen-reader-text">DronOrder</span></div>
@@ -37,22 +37,23 @@ get_header();
 					Subscribe
 				</button>
 			</div>
-		</form>  
+		</form>
+	</div>
+	<div class="has-text-align-center" style="margin-top:5rem;">
+		<a class="skip-lp " href="https://dronorder.net/front-page">
+			<span class="to-the-top-long">
+				<?php
+				/* translators: %s: HTML character for up arrow. */
+				printf(__('Skip %s', 'twentytwenty'), '<span class="arrow" aria-hidden="true">&rarr;</span>');
+				?>
+			</span><!-- .to-the-top-long -->
+			<span class="to-the-top-short">
+				<?php
+				/* translators: %s: HTML character for up arrow. */
+				printf(__('Skip %s', 'twentytwenty'), '<span class="arrow" aria-hidden="true">&rarr;</span>');
+				?>
+			</span><!-- .to-the-top-short -->
+		</a><!-- .to-the-top -->
 	</div>
 
 </main><!-- #site-content -->
-
-<a class="skip-lp" href="https://dronorder.net/front-page">
-	<span class="to-the-top-long">
-		<?php
-		/* translators: %s: HTML character for up arrow. */
-		printf(__('Skip %s', 'twentytwenty'), '<span class="arrow" aria-hidden="true">&rarr;</span>');
-		?>
-	</span><!-- .to-the-top-long -->
-	<span class="to-the-top-short">
-		<?php
-		/* translators: %s: HTML character for up arrow. */
-		printf(__('Skip %s', 'twentytwenty'), '<span class="arrow" aria-hidden="true">&rarr;</span>');
-		?>
-	</span><!-- .to-the-top-short -->
-</a><!-- .to-the-top -->

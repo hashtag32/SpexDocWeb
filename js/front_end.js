@@ -149,7 +149,7 @@ function SetPrice(price_dollar) {
 }
 
 function checkFormRequestDelivery() {
-  var form_Validity=true;
+  var form_Validity = true;
   // Start Time valid
   var startTimeObj = document.getElementById("startTime_input");
   form_Validity &= startTimeObj.checkValidity();
@@ -163,14 +163,18 @@ function checkFormRequestDelivery() {
   form_Validity &= shipped_itemObj.checkValidity();
 
   if (TotalMarker.length != 2) {
-    $("#HowToMapID").modal();
-
-    document.getElementById("HowToVideoID").style.height = "100%";
-    document.getElementById("HowToVideoID").style.width = "100%";
-    document.getElementById("HowToVideoID").play();
+    OpenAndPlayHowToModal();
   }
 
   return form_Validity;
+}
+
+function OpenAndPlayHowToModal() {
+  $("#HowToMapID").modal();
+
+  document.getElementById("HowToVideoID").style.height = "100%";
+  document.getElementById("HowToVideoID").style.width = "100%";
+  document.getElementById("HowToVideoID").play();
 }
 
 function requestDelivery(button, email_input, startTime_input, shipped_item) {
@@ -188,7 +192,7 @@ function requestDelivery(button, email_input, startTime_input, shipped_item) {
     startLat,
     startLng,
     startTime_input,
-    shipped_item
+    shipped_item,
   ]);
 
   $("#submissionModal").modal();
