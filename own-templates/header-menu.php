@@ -6,7 +6,7 @@
 		<div class="header-titles-wrapper">
 
 			<?php
-
+ 
 			// Check whether the header search is activated in the customizer.
 			$enable_header_search = get_theme_mod('enable_header_search', true);
 
