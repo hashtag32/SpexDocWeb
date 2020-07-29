@@ -454,7 +454,7 @@ hr.styled-separator::after {
 }
 
 a {
-	color: #cd2653;
+	color: #007bff;
 	text-decoration: underline;
 }
 
@@ -537,7 +537,7 @@ dd + dt {
 /* Quotes ------------------------------------ */
 
 blockquote {
-	border-color: #cd2653;
+	border-color: #007bff;
 	border-style: solid;
 
 	/*rtl:ignore*/
@@ -779,20 +779,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 textarea {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background: #fff;
-	border-radius: 0;
-	border-style: solid;
-	border-width: 0.1rem;
-	box-shadow: none;
-	display: block;
-	font-size: 1.6rem;
-	letter-spacing: -0.015em;
-	margin: 0;
-	max-width: 100%;
-	padding: 1.5rem 1.8rem;
-	width: 100%;
+
 }
 
 select {
@@ -834,7 +821,7 @@ input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background: #cd2653;
+	background: #007bff;
 	border: none;
 	border-radius: 0;
 	color: #fff;
@@ -1090,7 +1077,7 @@ button.toggle {
 .color-accent,
 .color-accent-hover:focus,
 .color-accent-hover:hover {
-	color: #cd2653;
+	color: #007bff;
 }
 
 /* BACKGROUND COLOR */
@@ -1098,7 +1085,7 @@ button.toggle {
 .bg-accent,
 .bg-accent-hover:focus,
 .bg-accent-hover:hover {
-	background-color: #cd2653;
+	background-color: #007bff;
 }
 
 /* BORDER COLOR */
@@ -1106,14 +1093,14 @@ button.toggle {
 .border-color-accent,
 .border-color-accent-hover:focus,
 .border-color-accent-hover:hover {
-	border-color: #cd2653;
+	border-color: #007bff;
 }
 
 /* FILL COLOR */
 
 .fill-children-accent,
 .fill-children-accent * {
-	fill: #cd2653;
+	fill: #007bff;
 }
 
 .fill-children-current-color,
@@ -1303,7 +1290,7 @@ ul.social-icons li {
 
 .social-icons a {
 	align-items: center;
-	background: #cd2653;
+	background: #007bff;
 	border-radius: 50%;
 	color: #fff;
 	display: flex;
@@ -2742,11 +2729,11 @@ h2.entry-title {
 /* CUSTOM COLORS */
 
 :root .has-accent-color {
-	color: #cd2653;
+	color: #007bff;
 }
 
 :root .has-accent-background-color {
-	background-color: #cd2653;
+	background-color: #007bff;
 	color: #fff;
 }
 
@@ -2804,7 +2791,7 @@ h2.entry-title {
 }
 
 .has-drop-cap:not(:focus)::first-letter {
-	color: #cd2653;
+	color: #007bff;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 5.1em;
 	font-weight: 800;
@@ -3023,7 +3010,7 @@ h2.entry-title {
 }
 
 .wp-block-button.is-style-outline {
-	color: #cd2653;
+	color: #007bff;
 }
 
 .is-style-outline .wp-block-button__link:not(.has-text-color) {
@@ -3209,7 +3196,7 @@ figure.wp-block-gallery.alignfull {
 .wp-block-pullquote::before {
 	background: #fff;
 	border-radius: 50%;
-	color: #cd2653;
+	color: #007bff;
 	content: "”";
 	display: block;
 	font-size: 6.2rem;
@@ -3829,7 +3816,7 @@ div.comment:first-of-type {
 }
 
 .comment-reply-link {
-	background-color: #cd2653;
+	background-color: #007bff;
 	color: #fff;
 	display: block;
 	padding: 0.7rem;
@@ -4444,7 +4431,7 @@ ul.footer-social li {
 }
 
 .footer-social a {
-	background-color: #cd2653;
+	background-color: #007bff;
 	height: 3.6rem;
 	width: 3.6rem;
 }

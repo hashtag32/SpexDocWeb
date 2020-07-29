@@ -22,7 +22,6 @@ get_header();
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Landing Page - Start Bootstrap Theme</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo get_template_directory_uri() ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,8 +41,7 @@ get_header();
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
-			<a class="btn btn-primary" href="#">Sign In</a>
+			<a class="navbar-brand" href="#">SpexDoc</a>
 		</div>
 	</nav>
 
@@ -52,18 +50,18 @@ get_header();
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+				<div class="col-xl-12 mx-auto">
+					<h1 class="mb-3">Die digitale Patientenakte für Ärtze und Patienten  Sicher & Einfach</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+					<form onsubmit="window.location.href = 'https://app.spexdoc.net'; return false;">
+						<div class="form-row"> 
+						<div class="col-12 col-md-3">
 							</div>
-							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+							<div class="col-12 col-md-6">
+								<button type="submit" class="btn btn-block btn-lg btn-primary">App starten</button>
 							</div>
+						
 						</div>
 					</form>
 				</div>
@@ -170,16 +168,16 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h2 class="mb-4">Ready to get started? Sign up now!</h2>
+					<h2 class="mb-4">Abonnieren Sie unseren Newsletter</h2>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form>
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+								<input type="email" class="form-control form-control-lg" placeholder="Ihre Email...">
 							</div>
 							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+								<button type="submit" class="btn btn-block btn-lg btn-primary">Abonnieren</button>
 							</div>
 						</div>
 					</form>
