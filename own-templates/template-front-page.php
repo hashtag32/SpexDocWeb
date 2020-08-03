@@ -28,7 +28,7 @@ get_header();
 
 	<!-- Custom fonts for this template -->
 	<link href="<?php echo get_template_directory_uri() ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="<?php echo get_template_directory_uri() ?>/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo get_template_directory_uri() ?>/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 	<!-- Custom styles for this template -->
@@ -51,17 +51,17 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12 mx-auto">
-					<h1 class="mb-3">Die digitale Patientenakte für Ärtze und Patienten  Sicher & Einfach</h1>
+					<h1 class="mb-3">Die digitale Patientenakte für Ärtze und Patienten </h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form onsubmit="window.location.href = 'https://app.spexdoc.net'; return false;">
-						<div class="form-row"> 
-						<div class="col-12 col-md-3">
+						<div class="form-row">
+							<div class="col-12 col-md-3">
 							</div>
 							<div class="col-12 col-md-6">
 								<button type="submit" class="btn btn-block btn-lg btn-primary">App starten</button>
-							</div>
-						
+							</div> 
+
 						</div>
 					</form>
 				</div>
@@ -76,28 +76,28 @@ get_header();
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
-							<i class="icon-screen-desktop m-auto text-primary"></i>
+							<i class="fa fa-heart m-auto text-primary"></i>
 						</div>
-						<h3>Fully Responsive</h3>
-						<p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+						<h3>Mit Herz</h3>
+						<p class="lead mb-0">Durch unsere Kundenorientierung können wir gemeinsam alles schaffen</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
-							<i class="icon-layers m-auto text-primary"></i>
+							<i class="m-auto text-primary fas fa-shield-alt"></i>
 						</div>
-						<h3>Bootstrap 4 Ready</h3>
-						<p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+						<h3>Sicher</h3>
+						<p class="lead mb-0">Unser Quellcode ist Open Source und wir ständig getestet</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
-							<i class="icon-check m-auto text-primary"></i>
+							<i class="fa fa-user-md m-auto text-primary"></i>
 						</div>
-						<h3>Easy to Use</h3>
-						<p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+						<h3>Kompetenz</h3>
+						<p class="lead mb-0">Die Inhalte werden in Zusammenarbeit mit Ärzten erstellt</p>
 					</div>
 				</div>
 			</div>
@@ -109,24 +109,24 @@ get_header();
 		<div class="container-fluid p-0">
 			<div class="row no-gutters">
 
-				<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/bg-showcase-1.jpg');"></div>
+				<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/digital-doctor.jpg');"></div>
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Fully Responsive Design</h2>
-					<p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-				</div>
+					<h2>Willkommen im digitalen Zeitalter</h2> 
+					<p class="lead mb-0">Verwalten Sie alle Patientendaten an einem Ort. Ganz gleich ob diese von Ihrer Smart Watch, Ihrem Handy oder vom Facharzt kommen. Hier sind sie sicher.</p>
+				</div> 
 			</div>
 			<div class="row no-gutters">
-				<div class="col-lg-6 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/bg-showcase-2.jpg');"></div>
+				<div class="col-lg-6 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/teddy.jpg');"></div>
 				<div class="col-lg-6 my-auto showcase-text">
-					<h2>Updated For Bootstrap 4</h2>
-					<p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!</p>
+					<h2>Manchmal ist online angenehmer</h2>
+					<p class="lead mb-0">Vereinbaren Sie einen Online Termin mit Ihrem Arzt und schonen Sie sich lieber zuhause. Nicht jede Erkrankung erfordert eine persönliche Anwesenheit.</p>
 				</div>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/bg-showcase-3.jpg');"></div>
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Easy to Use &amp; Customize</h2>
-					<p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+					<h2>Für Groß &amp; Klein</h2>
+					<p class="lead mb-0">Unser Service steht jedem rund um die Uhr zur Verfügung. Über die Smart Doc Funktionalität können auch Online Diagnosen gestellt werden.</p>
 				</div>
 			</div>
 		</div>
@@ -135,27 +135,27 @@ get_header();
 	<!-- Testimonials -->
 	<section class="testimonials text-center bg-light">
 		<div class="container">
-			<h2 class="mb-5">What people are saying...</h2>
+			<h2 class="mb-5">Unsere Rezensionen</h2>
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
 						<img class="img-fluid rounded-circle mb-3" src="<?php echo get_template_directory_uri() ?>/img/testimonials-1.jpg" alt="">
-						<h5>Margaret E.</h5>
-						<p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+						<h5>Leonie E.</h5>
+						<p class="font-weight-light mb-0">"Die App funktioniert wirklich super! Bin sehr dankbar, dass ich meine Patientendaten endlich geordnet auf meinem PC habe!"</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
 						<img class="img-fluid rounded-circle mb-3" src="<?php echo get_template_directory_uri() ?>/img/testimonials-2.jpg" alt="">
-						<h5>Fred S.</h5>
-						<p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+						<h5>Nico S.</h5>
+						<p class="font-weight-light mb-0">"Ich konnte meinem Arzt über einen Link meine Daten zeigen. Er war begeistert - ich auch :)"</p>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
 						<img class="img-fluid rounded-circle mb-3" src="<?php echo get_template_directory_uri() ?>/img/testimonials-3.jpg" alt="">
 						<h5>Sarah W.</h5>
-						<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+						<p class="font-weight-light mb-0">"Egal ob über mein Tablet, Handy oder PC es funktioniert immer gleich."</p>
 					</div>
 				</div>
 			</div>
@@ -244,7 +244,3 @@ get_header();
 
 
 
-
-<?php get_template_part('template-parts/footer-menus-widgets'); ?>
-
-<?php get_footer(); ?>
