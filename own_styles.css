@@ -154,7 +154,7 @@
 	---------------------- */
 body {
     font-size: 20px;
-    position:absolute;
+    position:relative;
 }
 h1 {
     font-size: 2em;
@@ -239,3 +239,4 @@ Upper div has to have a position:relative */
 	height:100%; 
 	/* z-index: 1; */
 } 
+
