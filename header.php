@@ -35,6 +35,8 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	  <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/own_styles.css" />
+
  
 	<?php wp_head(); ?>
 
@@ -46,17 +48,7 @@
 	wp_body_open();
 	?>
 
-	<?php
-	// Output the menu modal.
-	if (!(is_front_page() || is_page(4324))) {
-		get_template_part('own-templates/header-menu');
-	}
-	?>
 
-	<?php
-	// Output the menu modal.
-	get_template_part('template-parts/modal-menu');
-	?>
-
-	<a class="btn btn-primary feedback-button" href="https://dronorder.net/contact" role="button">Feedback</a>
+	
+	<a class="btn btn-primary feedback-button" href="https://spexdoc.net/contact" role="button">Feedback</a>
 	

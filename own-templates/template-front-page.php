@@ -15,7 +15,6 @@ get_header();
 ?>
 
 <head>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-
   scale=1, shrink-to-fit=no">
@@ -36,7 +35,6 @@ get_header();
 
 </head>
 
-<body>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
@@ -60,7 +58,7 @@ get_header();
 							</div>
 							<div class="col-12 col-md-6">
 								<button type="submit" class="btn btn-block btn-lg btn-primary">App starten</button>
-							</div> 
+							</div>
 
 						</div>
 					</form>
@@ -111,9 +109,9 @@ get_header();
 
 				<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/digital-doctor.jpg');"></div>
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Willkommen im digitalen Zeitalter</h2> 
+					<h2>Willkommen im digitalen Zeitalter</h2>
 					<p class="lead mb-0">Verwalten Sie alle Patientendaten an einem Ort. Ganz gleich ob diese von Ihrer Smart Watch, Ihrem Handy oder vom Facharzt kommen. Hier sind sie sicher.</p>
-				</div> 
+				</div>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-lg-6 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/teddy.jpg');"></div>
@@ -133,7 +131,7 @@ get_header();
 	</section>
 
 	<!-- Testimonials -->
-	<section class="testimonials text-center bg-light">
+	<section class="features-icons text-center bg-light">
 		<div class="container">
 			<h2 class="mb-5">Unsere Rezensionen</h2>
 			<div class="row">
@@ -240,7 +238,3 @@ get_header();
 </body>
 
 </html>
-
-
-
-
