@@ -497,7 +497,7 @@ ol ol ol {
 
 li {
 	line-height: 1.5;
-	margin: 0.5rem 0 0 2rem;
+	margin: 0.25rem;
 }
 
 li > ul,
@@ -3562,7 +3562,7 @@ figure.wp-block-table.is-style-stripes {
 .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
 	max-width: 58rem;
 	width: calc(100% - 4rem);
-	color:white;
+	color:black;
 }
 
 [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {

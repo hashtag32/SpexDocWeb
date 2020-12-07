@@ -1,8 +1,8 @@
 .entry-header {
-    background-color: #f4623a !important;
+    background-color: #007bff !important;
 }
 #site-footer {
-    background-color: #f4623a !important;
+    background-color: #c4e1ff !important;
 }
 
 .feedback-button {
@@ -38,7 +38,7 @@
 }
 
 .smart-button {
-    color: white;
+    background-color: blue !important;
     letter-spacing: 2.5px;
     border: none;
     border-radius: 45px;
@@ -59,7 +59,7 @@
 }
 
 .smart-button[value="orange"]  {
-    background-color: #f4623a;
+    background-color: #007bff;
 }
 
 .smart-button[value="orange"]:hover {
@@ -178,7 +178,7 @@ h6 {
 
 .h2-highlighting-button
 {
-	background-color:#F4623A;
+	background-color:#007bff;
 	transition: all 0.3s ease 0s;
 	cursor: pointer;
 	padding:15px;
