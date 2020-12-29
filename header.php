@@ -13,20 +13,17 @@
 ?>
 <!DOCTYPE html>
 
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-32361477-3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVSR5H53L"></script>
 <script>
-	window.dataLayer = window.dataLayer || [];
-
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-32361477-3');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+ 
+  gtag('config', 'G-3PVSR5H53L');
 </script>
-
-
+ 
 <html class="no-js" <?php language_attributes(); ?>>
 
 <head>

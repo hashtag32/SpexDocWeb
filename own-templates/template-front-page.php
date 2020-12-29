@@ -33,6 +33,7 @@ get_header();
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/landing-page.min.css" />
 
+
 </head>
 
 
@@ -44,19 +45,17 @@ get_header();
 </nav>
 
 <!-- Masthead -->
-<header class="masthead text-white text-center">
+<header style="padding-bottom:8rem" class="masthead text-white text-center">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-12 mx-auto">
-				<h1 class="mb-3">Die digitale Patientenakte für Ärtze und Patienten </h1>
+				<h1 class="mb-3">Die digitale Patientenakte für Ärzte und Patienten </h1>
 			</div>
-			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+			<div style="margin-top:8rem" class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 				<form onsubmit="window.location.href = 'https://app.spexdoc.net'; return false;">
 					<div class="form-row">
-						<div class="col-12 col-md-3">
-						</div>
-						<div class="col-12 col-md-6">
+						<div class="col-12 col-md-12">
 							<button type="submit" class="btn btn-block btn-lg btn-primary">App starten</button>
 						</div>
 
@@ -104,11 +103,28 @@ get_header();
 
 <!-- Image Showcases -->
 <section class="showcase">
+
 	<div class="container-fluid p-0">
 		<div class="row no-gutters">
 
+
 			<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('<?php echo get_template_directory_uri() ?>/img/digital-doctor.jpg');"></div>
+
 			<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+				<svg style="float:left; margin: 10px" viewBox="0 0 5.36 92" class="bpa-icon bpa-icon-bpa-flag" width="10" version=".1" role="img" preserveAspectRatio="none" aria-labelledby="aria-5-6mj87rm7x9aqlv8gmv5ng84em" focusable="false">
+					<title id="aria-5-6mj87rm7x9aqlv8gmv5ng84em">Die Flagge</title>
+					<use xlink:href="#icon-bpa-flag">
+
+						<svg viewBox="0 0 5.36 92" id="icon-bpa-flag" xmlns="http://www.w3.org/2000/svg">
+							<!-- title removed by grunt task -->
+							<g id="ah5d39d168-7a21-4937-946c-46f830e222d4" data-name="bpa-flag">
+								<path d="M5.68,31H.32V.33H5.68Z"></path>
+								<path d="M5.68,61.68H.32V31H5.68Z" style="fill:red"></path>
+								<path d="M5.68,92.35H.32V61.68H5.68Z" style="fill:#fc0"></path>
+							</g>
+						</svg>
+					</use>
+				</svg>
 				<h2>Willkommen im digitalen Zeitalter</h2>
 				<p class="lead mb-0">Verwalten Sie alle Patientendaten an einem Ort. Ganz gleich ob diese von Ihrer Smart Watch, Ihrem Handy oder vom Facharzt kommen. Hier sind sie sicher.</p>
 			</div>
@@ -229,8 +245,7 @@ get_header();
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 
