@@ -55,8 +55,10 @@ get_header();
 			<div style="margin-top:8rem" class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 				<form onsubmit="window.location.href = 'https://app.spexdoc.net'; return false;">
 					<div class="form-row">
-						<div class="col-12 col-md-12">
-							<button type="submit" class="btn btn-block btn-lg btn-primary">App starten</button>
+						<div class="col-12 col-md-2">
+						</div>
+						<div class="col-12 col-md-8">
+							<button type="submit" class="btn btn-block btn-lg btn-primary">Patientenakte anlegen</button>
 						</div>
 
 					</div>
@@ -185,16 +187,14 @@ get_header();
 				<h2 class="mb-4">Abonnieren Sie unseren Newsletter</h2>
 			</div>
 			<div class="tnp tnp-subscription col-md-10 col-lg-8 col-xl-7">
-				<form method="post" action="https://spexdoc.net/?na=s" onsubmit="return newsletter_check(this)">
-					<div class="form-row">
-						<div class="col-12 col-md-9 mb-2 mb-md-0">
-							<input type="email" class="form-control form-control-lg" placeholder="Ihre Email..." name="ne" required>
-						</div>
-						<div class="tnp-field tnp-field-button col-12 col-md-3">
-							<button class="btn btn-block btn-lg btn-primary" type="submit">
-								Abonnieren
-							</button>
-						</div>
+				<form class="form-row" id="sib-form" method="POST" action="https://3a26c2ed.sibforms.com/serve/MUIEAKuRdaLXH9vu4Gj-P33y0rzT14-LPZAPTTxR_fScDbZ3GxJtpHcEuf_b4QGu6tm_ZGok5WmajEl_4MbcIZMlc867254P1yzTG59GD0b0u3mpHQ8AT9rk_TMWajWDYTDMdcESPXxr3GFCR8y332xThGAuJi9RIbrnI_nvk1UJYuGwAgTP3RBsXirmDaCiVG6efo-1UqHSwSo3">
+					<div class="col-12 col-md-9 mb-2 mb-md-0">
+						<input class="form-control form-control-lg" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Ihre Email..." data-required="true" required />
+					</div>
+					<div class="tnp-field tnp-field-button col-12 col-md-3">
+						<button class="btn btn-block btn-lg btn-primary sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+							Abonnieren
+						</button>
 					</div>
 				</form>
 			</div>
